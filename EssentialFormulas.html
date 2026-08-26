@@ -32,3 +32,397 @@
             line-height: 1.6;
             padding: 2rem 1rem;
         }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(90deg, #60a5fa, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            padding: 1.75rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: #cbd5e1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .category-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .formula-box {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .math {
+            font-family: 'Cambria Math', 'Georgia', 'Times New Roman', serif;
+            font-size: 1.35rem;
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        .math sub, .math sup {
+            font-size: 0.75em;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .tip-box {
+            background-color: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: 6px;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            color: #873800;
+        }
+
+        .tip-box strong {
+            color: #d46b08;
+        }
+
+        footer {
+            margin-top: 3.5rem;
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 640px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="badge">SAT Prep Toolkit</span>
+        <h1>Essential SAT Math Formulas</h1>
+        <p>Crucial equations & rules that are <strong>NOT</strong> provided on the official SAT Math Reference Sheet. Master these for top-score performance!</p>
+    </header>
+
+    <div class="grid">
+
+        <!-- Algebra & Lines -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Slope Formula</span>
+                <span class="category-tag">Algebra</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">m = (y<sub>2</sub> - y<sub>1</sub>) / (x<sub>2</sub> - x<sub>1</sub>)</span>
+            </div>
+            <p class="description">Calculates the steepness or rate of change between two points (x<sub>1</sub>, y<sub>1</sub>) and (x<sub>2</sub>, y<sub>2</sub>).</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Parallel lines have <em>equal slopes</em> (m<sub>1</sub> = m<sub>2</sub>). Perpendicular lines have <em>negative reciprocal slopes</em> (m<sub>1</sub> · m<sub>2</sub> = -1).
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Slope-Intercept Form</span>
+                <span class="category-tag">Algebra</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">y = mx + b</span>
+            </div>
+            <p class="description">The standard representation of a linear equation where <em>m</em> is the slope and <em>b</em> is the y-intercept (0, b).</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> If given Point-Slope form <code>y - y<sub>1</sub> = m(x - x<sub>1</sub>)</code>, convert to slope-intercept for quick identification of intercept.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Midpoint Formula</span>
+                <span class="category-tag">Geometry</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">M = ((x<sub>1</sub> + x<sub>2</sub>)/2, (y<sub>1</sub> + y<sub>2</sub>)/2)</span>
+            </div>
+            <p class="description">Finds the exact center point between two coordinate points.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Simply calculate the average of the x-coordinates and the average of the y-coordinates.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Distance Formula</span>
+                <span class="category-tag">Geometry</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">d = √[(x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup>]</span>
+            </div>
+            <p class="description">Calculates the straight-line distance between two points in a coordinate plane.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> This is just the Pythagorean Theorem (a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>) in disguise! Draw a right triangle on the grid if you forget it.
+            </div>
+        </div>
+
+        <!-- Quadratics & Advanced Math -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Quadratic Formula</span>
+                <span class="category-tag">Advanced Math</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">x = [-b ± √(b<sup>2</sup> - 4ac)] / 2a</span>
+            </div>
+            <p class="description">Solves for x in any quadratic equation in standard form: <em>ax<sup>2</sup> + bx + c = 0</em>.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Ensure the equation is set to equal 0 before extracting <em>a</em>, <em>b</em>, and <em>c</em>.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">The Discriminant</span>
+                <span class="category-tag">Advanced Math</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">D = b<sup>2</sup> - 4ac</span>
+            </div>
+            <p class="description">Determines the number and type of solutions for a quadratic equation.</p>
+            <div class="tip-box">
+                <strong>D > 0:</strong> 2 Real Solutions<br>
+                <strong>D = 0:</strong> 1 Real Solution<br>
+                <strong>D < 0:</strong> 0 Real Solutions (2 Complex)
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Vertex of a Parabola</span>
+                <span class="category-tag">Advanced Math</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">x = -b / (2a)</span>
+            </div>
+            <p class="description">Finds the x-coordinate of the vertex (and the axis of symmetry) for <em>y = ax<sup>2</sup> + bx + c</em>.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Plug the x-value back into the original equation to find the y-coordinate of the vertex (minimum or maximum value).
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Vertex Form</span>
+                <span class="category-tag">Advanced Math</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">y = a(x - h)<sup>2</sup> + k</span>
+            </div>
+            <p class="description">A quadratic form where <em>(h, k)</em> represents the explicit vertex of the parabola.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Pay attention to signs! In <em>(x - 3)<sup>2</sup> + 5</em>, the vertex is at (3, 5).
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Sum & Product of Roots</span>
+                <span class="category-tag">Advanced Math</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">Sum = -b / a &nbsp;|&nbsp; Product = c / a</span>
+            </div>
+            <p class="description">Quickly finds the sum or product of the solutions of <em>ax<sup>2</sup> + bx + c = 0</em> without solving.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Saves massive amounts of time on high-level polynomial questions.
+            </div>
+        </div>
+
+        <!-- Problem Solving & Data -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Exponential Growth / Decay</span>
+                <span class="category-tag">Data Analysis</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">y = a(1 ± r)<sup>t</sup></span>
+            </div>
+            <p class="description">Models growth (+r) or decay (-r). <em>a</em> is initial amount, <em>r</em> is percentage rate (decimal), <em>t</em> is time.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> For compound interest, use <code>A = P(1 + r/n)<sup>nt</sup></code> where <em>n</em> is compounding frequency per period.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Percent Change</span>
+                <span class="category-tag">Problem Solving</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">% Change = [(New - Old) / Old] × 100</span>
+            </div>
+            <p class="description">Calculates percentage increase or decrease relative to the original value.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Always divide by the <em>original (Old)</em> value, never the new value!
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Circle Equation</span>
+                <span class="category-tag">Geometry</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">(x - h)<sup>2</sup> + (y - k)<sup>2</sup> = r<sup>2</sup></span>
+            </div>
+            <p class="description">Equation of a circle in a coordinate plane centered at <em>(h, k)</em> with radius <em>r</em>.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Be prepared to "complete the square" to put general circle equations into this standard form!
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Arc Length & Sector Area</span>
+                <span class="category-tag">Geometry</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">Arc = (θ/360)×2πr &nbsp;|&nbsp; Area = (θ/360)×πr<sup>2</sup></span>
+            </div>
+            <p class="description">Calculates proportional fraction of circumference or total area for central angle <em>θ</em> in degrees.</p>
+            <div class="tip-box">
+                <strong>If θ is in Radians:</strong><br>
+                Arc Length = <em>r · θ</em> &nbsp;|&nbsp; Sector Area = <em>½ · r<sup>2</sup> · θ</em>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Basic Trigonometric Ratios</span>
+                <span class="category-tag">Trigonometry</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">SOH - CAH - TOA</span>
+            </div>
+            <p class="description">
+                sin(θ) = Opp / Hyp<br>
+                cos(θ) = Adj / Hyp<br>
+                tan(θ) = Opp / Adj
+            </p>
+            <div class="tip-box">
+                <strong>Complement Rule:</strong> <code>sin(x°) = cos(90° - x°)</code>. If sin(A) = cos(B), then A + B = 90°.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Pythagorean Identity</span>
+                <span class="category-tag">Trigonometry</span>
+            </div>
+            <div class="formula-box">
+                <span class="math">sin<sup>2</sup>(θ) + cos<sup>2</sup>(θ) = 1</span>
+            </div>
+            <p class="description">Fundamental identity relating sine and cosine of any angle.</p>
+            <div class="tip-box">
+                <strong>SAT Tip:</strong> Can be rewritten as <code>sin<sup>2</sup>(θ) = 1 - cos<sup>2</sup>(θ)</code> to simplify complex trigonometric expressions.
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>SAT® is a registered trademark of the College Board, which was not involved in the production of, and does not endorse, this study guide.</p>
+    </footer>
+</div>
+
+</body>
+</html>
