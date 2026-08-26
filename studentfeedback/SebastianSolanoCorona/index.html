@@ -1,184 +1,219 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Dashboard - Sebastián Solano Corona</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background-color: #f7fafc;
-      color: #2d3748;
-      line-height: 1.5;
-      padding: 24px;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard — Sebastián Solano Corona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .dashboard-container {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #ffffff;
+            color: #0b3b60;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-    /* Header Styling */
-    .header-card {
-      background-color: #ffffff;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+        .dashboard-container {
+            width: 100%;
+            max-width: 960px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
 
-    .avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: #3182ce;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
+        /* Branding Header Image */
+        .brand-header-img {
+            width: 100%;
+            max-width: 960px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
 
-    .header-info h1 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #1a202c;
-    }
+        .student-title-card {
+            text-align: center;
+            margin-top: 16px;
+        }
 
-    .header-info p {
-      font-size: 14px;
-      color: #718096;
-      margin-top: 4px;
-    }
+        .student-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0b3b60;
+            margin-bottom: 6px;
+        }
 
-    .header-info p span {
-      font-weight: 600;
-      color: #4a5568;
-    }
+        .student-meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #4a5568;
+        }
 
-    /* Section Component Styling */
-    .section-card {
-      background-color: #e2e8f0;
-      border-radius: 8px;
-      padding: 20px;
-    }
+        .student-meta span {
+            color: #0073e6;
+        }
 
-    .section-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+        /* Sections */
+        .section-container {
+            border-radius: 20px;
+            padding: 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
 
-    /* Grid Layouts */
-    .grid {
-      display: grid;
-      gap: 12px;
-      width: 100%;
-    }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a202c;
+        }
 
-    .grid-3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
+        /* Color Themes per Image */
+        .bg-resources {
+            background-color: #a5cadc;
+        }
 
-    .grid-4 {
-      grid-template-columns: repeat(4, 1fr);
-    }
+        .bg-assessments {
+            background-color: #d1ebd0;
+        }
 
-    /* Action Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 12px 16px;
-      background-color: #3182ce;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      text-align: center;
-    }
+        .bg-tools {
+            background-color: #f3d4c1;
+        }
 
-    .btn:hover {
-      background-color: #2b6cb0;
-    }
+        /* Grids */
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
 
-    /* Responsive Breakpoint */
-    @media (max-width: 768px) {
-      .header-card {
-        flex-direction: column;
-        text-align: center;
-      }
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
 
-      .grid-3,
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style></head><body>
+        .grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
 
-  <div class="dashboard-container">
-    
-    <!-- Student Header -->
-    <header class="header-card">
-      <div class="avatar" aria-label="Student initials">SSC</div>
-      <div class="header-info">
-        <h1>Student Dashboard — Sebastián Solano Corona</h1>
-        <p>
-          Target Math Score: <span>600–700</span> &nbsp;|&nbsp; 
-          Target Test Date: <span>October 3, 2026</span>
-        </p>
-      </div>
-    </header>
+        /* Buttons */
+        .btn {
+            color: #ffffff;
+            font-weight: 600;
+            padding: 18px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1.05rem;
+            transition: transform 0.15s ease, filter 0.15s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
 
-    <!-- Section 1: Learning Resources -->
-    <section class="section-card">
-      <h2 class="section-title">Learning Resources</h2>
-      <div class="grid grid-3">
-        <a href="https://docs.google.com/document/d/1jL9hymSPzceW5ezPk0ba0D7iR_nB1V2B/edit?usp=drive_link&amp;ouid=114792722511891132860&amp;rtpof=true&amp;sd=true" class="btn" target="_blank" rel="noopener noreferrer">✏️ Classroom Whiteboards</a>
-        <a href="https://crystalblueivy.github.io/my-website/EssentialFormulas.html" class="btn" target="_blank" rel="noopener noreferrer">📄 Essential Equations</a>
-        <a href="https://crystalblueivy.github.io/my-website/References.png" class="btn" target="_blank" rel="noopener noreferrer">📋 Reference Sheets</a>
-      </div>
-    </section>
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(0.93);
+        }
 
-    <!-- Section 2: Assessments -->
-    <section class="section-card">
-      <h2 class="section-title">Assessments</h2>
-      <div class="grid grid-4">
-        <a href="https://crystalblueivy.github.io/my-website/studentfeedback/SebastianSolanoCorona/dsat1.html" class="btn" target="_blank" rel="noopener noreferrer">📋 Diagnostic Test</a>
-        <a href="#" class="btn">✏️ Mock 1</a>
-        <a href="#" class="btn">✏️ Mock 2</a>
-        <a href="#" class="btn">✏️ Mock 3</a>
-      </div>
-    </section>
+        /* Button Variant Colors */
+        .btn-blue {
+            background-color: #0073e6;
+        }
 
-    <!-- Section 3: Practice Tools -->
-    <section class="section-card">
-      <h2 class="section-title">Practice Tools</h2>
-      <div class="grid grid-3">
-        <a href="#" class="btn">📄 Error Log</a>
-        <a href="https://testinnovators.com/" class="btn" target="_blank" rel="noopener noreferrer">🔗 Test Innovator Link</a>
-        <a href="https://crystalblueivy.github.io/my-website/TestInnovatorsSuccessGuide.jpg" class="btn" target="_blank" rel="noopener noreferrer">📘 Test Innovators Success Guide</a>
-      </div>
-    </section>
+        .btn-green {
+            background-color: #00b050;
+        }
 
-  </div></body></html>
+        .btn-orange {
+            background-color: #ff8533;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .student-name {
+                font-size: 1.6rem;
+            }
+
+            .student-meta {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .section-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Header Image & Student Name -->
+        <header>
+            <img src="https://crystalblueivy.github.io/my-website/DashboardHeader.png" alt="Blue Ivy Coaching Header" class="brand-header-img">
+
+            <div class="student-title-card">
+                <h1 class="student-name">Sebastián Solano Corona</h1>
+                <div class="student-meta">
+                    <div>Target Math Score: <span>600–700</span></div>
+                    <div>Target Test Date: <span>October 3, 2026</span></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Section 1: Learning Resources -->
+        <section class="section-container bg-resources">
+            <h2 class="section-title">Learning Resources</h2>
+            <div class="grid grid-3">
+                <a href="https://docs.google.com/document/d/1jL9hymSPzceW5ezPk0ba0D7iR_nB1V2B/edit?usp=drive_link&ouid=114792722511891132860&rtpof=true&sd=true" target="_blank" class="btn btn-blue">✏️ Classroom Whiteboards</a>
+                <a href="https://crystalblueivy.github.io/my-website/EssentialFormulas.html" target="_blank" class="btn btn-blue">📄 Essential Equations</a>
+                <a href="https://crystalblueivy.github.io/my-website/References.png" target="_blank" class="btn btn-blue">📋 Reference Sheets</a>
+            </div>
+        </section>
+
+        <!-- Section 2: Assessments -->
+        <section class="section-container bg-assessments">
+            <h2 class="section-title">Assessments</h2>
+            <div class="grid grid-4">
+                <a href="https://crystalblueivy.github.io/my-website/studentfeedback/SebastianSolanoCorona/dsat1.html" target="_blank" class="btn btn-green">📋 Diagnostic Test</a>
+                <a href="#" class="btn btn-green">✏️ Mock 1</a>
+                <a href="#" class="btn btn-green">✏️ Mock 2</a>
+                <a href="#" class="btn btn-green">✏️ Mock 3</a>
+            </div>
+        </section>
+
+        <!-- Section 3: Practice Tools -->
+        <section class="section-container bg-tools">
+            <h2 class="section-title">Practice Tools</h2>
+            <div class="grid grid-3">
+                <a href="#" class="btn btn-orange">📄 Error Log</a>
+                <a href="https://testinnovators.com/" target="_blank" class="btn btn-orange">🔗 Test Innovator Link</a>
+                <a href="https://crystalblueivy.github.io/my-website/TestInnovatorsSuccessGuide.jpg" target="_blank" class="btn btn-orange">📘 Test Innovators Success Guide</a>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
+
