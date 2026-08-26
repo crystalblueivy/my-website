@@ -16,6 +16,16 @@
             --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
+        /* Lock base document scaling */
+        html {
+            box-sizing: border-box;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #EBF0F5;
@@ -102,11 +112,12 @@
             margin-bottom: 0;
         }
 
-        /* Dashboard Grid Layout */
+        /* Fixed Grid Layout prevents shifting on zoom */
         .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
             gap: 25px;
+            width: 100%;
         }
 
         .card {
@@ -118,6 +129,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            /* Explicit width locked to half grid width minus gap */
+            width: calc(50% - 13.5px);
+            min-width: 320px;
+            box-sizing: border-box;
         }
 
         .card-title {
@@ -130,22 +145,26 @@
             text-align: center;
         }
 
+        /* Rigid chart canvas wrapper prevents element recalculation shifting */
         .chart-wrapper {
             position: relative;
             width: 100%;
             height: 220px;
+            max-height: 220px;
+            overflow: hidden;
         }
 
         .roadmap-img {
             max-width: 100%;
             height: auto;
+            max-height: 220px;
             border-radius: 6px;
             object-fit: contain;
         }
 
         @media (max-width: 768px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
+            .card {
+                width: 100%;
             }
         }
     </style>
