@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Must-Know SAT Math Formulas (Beyond the Reference Sheet)</title>
+    <title>Comprehensive SAT Math Topics & Formulas Guide</title>
     <style>
         :root {
             --primary: #2563eb;
@@ -34,55 +34,35 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
+        /* Header Image Styles - Fluid & Responsive */
         header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 1rem;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: #ffffff;
+            margin-bottom: 2.5rem;
+            width: 100%;
             border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
+            background-color: #0f172a;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -0.025em;
-            margin-bottom: 0.75rem;
-            background: linear-gradient(90deg, #60a5fa, #93c5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        header img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
         }
 
-        header p {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: rgba(245, 158, 11, 0.2);
-            color: #fbbf24;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.35rem 0.85rem;
-            border-radius: 9999px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-
+        /* Fully Responsive Grid Layout */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.75rem;
+            width: 100%;
         }
 
         .card {
@@ -90,10 +70,11 @@
             border-radius: 12px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
-            padding: 1.75rem;
+            padding: 1.5rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
+            width: 100%;
         }
 
         .card:hover {
@@ -130,21 +111,39 @@
         .formula-box {
             background-color: #f1f5f9;
             border-radius: 8px;
-            padding: 1rem;
+            padding: 0.85rem 0.75rem;
             text-align: center;
             margin-bottom: 1rem;
             border-left: 4px solid var(--primary);
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
         }
 
         .math {
-            font-family: 'Cambria Math', 'Georgia', 'Times New Roman', serif;
-            font-size: 1.35rem;
-            font-weight: bold;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: #0f172a;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .math-line {
+            margin-top: 0.4rem;
         }
 
         .math sub, .math sup {
             font-size: 0.75em;
+        }
+
+        .section-subhead {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin: 0.75rem 0 0.25rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         .description {
@@ -154,6 +153,15 @@
             flex-grow: 1;
         }
 
+        .description ul {
+            padding-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        .description li {
+            margin-bottom: 0.5rem;
+        }
+
         .tip-box {
             background-color: #fffbe6;
             border: 1px solid #ffe58f;
@@ -161,10 +169,55 @@
             padding: 0.75rem;
             font-size: 0.85rem;
             color: #873800;
+            margin-top: auto;
         }
 
         .tip-box strong {
             color: #d46b08;
+        }
+
+        /* SVG Containers - Scale automatically with card resize */
+        .visual-container {
+            text-align: center;
+            margin: 0.75rem 0;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .visual-container svg {
+            width: 100%;
+            height: auto;
+            max-width: 260px;
+        }
+
+        .systems-visual-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        .system-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #334155;
+            width: 100%;
+        }
+
+        .system-item svg {
+            width: 100%;
+            height: auto;
+            max-width: 90px;
         }
 
         footer {
@@ -176,12 +229,23 @@
             border-top: 1px solid var(--border);
         }
 
-        @media (max-width: 640px) {
-            header h1 {
-                font-size: 1.8rem;
+        /* Fluid Breakpoints for Mobile & Tablet */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
             }
             .grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .systems-visual-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .system-item svg {
+                max-width: 120px;
             }
         }
     </style>
@@ -189,231 +253,490 @@
 <body>
 
 <div class="container">
+    <!-- Header with custom requested image -->
     <header>
-        <span class="badge">SAT Prep Toolkit</span>
-        <h1>Essential SAT Math Formulas</h1>
-        <p>Crucial equations & rules that are <strong>NOT</strong> provided on the official SAT Math Reference Sheet. Master these for top-score performance!</p>
+        <img src="https://crystalblueivy.github.io/my-website/EssentialEquationsHeader.png" alt="Essential SAT Math Equations Header">
     </header>
 
     <div class="grid">
 
-        <!-- Algebra & Lines -->
+        <!-- TOPIC 1: LINEAR EQUATIONS -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Slope Formula</span>
-                <span class="category-tag">Algebra</span>
+                <span class="card-title">1. Linear Equations</span>
+                <span class="category-tag">Topic 01</span>
             </div>
-            <div class="formula-box">
-                <span class="math">m = (y<sub>2</sub> - y<sub>1</sub>) / (x<sub>2</sub> - x<sub>1</sub>)</span>
+            
+            <div class="formula-box" style="text-align: left; padding-left: 0.75rem;">
+                <div class="math">1. Y = MX + B</div>
+                <div class="math math-line">2. Y - Y₁ = M * (X - X₁)</div>
+                <div class="math math-line">3. M = (Y₂ - Y₁) / (X₂ - X₁)</div>
+                <div class="math math-line">4. Midpoint = ((X₁ + X₂) / 2, (Y₁ + Y₂) / 2)</div>
+                <div class="math math-line">5. Distance = √((X₂ - X₁)² + (Y₂ - Y₁)²)</div>
             </div>
-            <p class="description">Calculates the steepness or rate of change between two points (x<sub>1</sub>, y<sub>1</sub>) and (x<sub>2</sub>, y<sub>2</sub>).</p>
+
+            <div class="description">
+                <div class="section-subhead">Key Definitions</div>
+                <ul>
+                    <li><strong>Parallel Lines:</strong> Lines with the <em>same slope</em> (m₁ = m₂) that never intersect.</li>
+                    <li><strong>Perpendicular Lines:</strong> Lines with <em>negative reciprocal slopes</em> (m₁ · m₂ = -1) intersecting at 90°.</li>
+                </ul>
+
+                <div class="section-subhead">Intercepts Representation</div>
+                <p>Visualization of <strong>y = x + 2</strong> with explicit intercept points and coordinates:</p>
+                
+                <!-- Updated Intercept Representation matching target image (y = x + 2) -->
+                <div class="visual-container">
+                    <svg viewBox="0 0 240 180">
+                        <!-- Y and X Axes with Arrows -->
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#000" />
+                            </marker>
+                        </defs>
+                        <line x1="20" y1="135" x2="220" y2="135" stroke="#000" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        <line x1="120" y1="170" x2="120" y2="15" stroke="#000" stroke-width="1.5" marker-end="url(#arrow)"/>
+                        
+                        <!-- Axis Labels -->
+                        <text x="225" y="139" font-size="14" font-family="serif" font-style="italic" fill="#000">x</text>
+                        <text x="116" y="12" font-size="14" font-family="serif" font-style="italic" fill="#000">y</text>
+                        
+                        <!-- Line: y = x + 2 -->
+                        <!-- Passes through (-2,0) at (70,135) and (0,2) at (120,85) -->
+                        <line x1="40" y1="165" x2="175" y2="30" stroke="#000" stroke-width="2"/>
+                        <text x="165" y="25" font-size="14" font-family="serif" font-style="italic" font-weight="bold" fill="#000">y = x + 2</text>
+
+                        <!-- x-intercept point (-2, 0) -->
+                        <circle cx="70" cy="135" r="7" fill="#0000cc"/>
+                        <text x="15" y="125" font-size="14" font-family="sans-serif" font-style="italic" font-weight="bold" fill="#0000cc">x-intercept</text>
+                        <text x="75" y="153" font-size="12" font-family="sans-serif" fill="#000">(-2, 0)</text>
+
+                        <!-- y-intercept point (0, 2) -->
+                        <circle cx="120" cy="85" r="7" fill="#e65c00"/>
+                        <text x="50" y="75" font-size="14" font-family="sans-serif" font-style="italic" font-weight="bold" fill="#e65c00">y-intercept</text>
+                        <text x="128" y="98" font-size="12" font-family="sans-serif" fill="#000">(0, 2)</text>
+                    </svg>
+                </div>
+
+                <div class="section-subhead">Systems of Linear Equations</div>
+                <div class="systems-visual-grid">
+                    <!-- One Solution -->
+                    <div class="system-item">
+                        <span>One Solution</span>
+                        <svg viewBox="0 0 90 80">
+                            <rect width="90" height="80" fill="#f8fafc" rx="4" stroke="#e2e8f0"/>
+                            <line x1="10" y1="40" x2="80" y2="40" stroke="#cbd5e1" stroke-width="1"/>
+                            <line x1="45" y1="10" x2="45" y2="70" stroke="#cbd5e1" stroke-width="1"/>
+                            <line x1="15" y1="65" x2="75" y2="15" stroke="#2563eb" stroke-width="2"/>
+                            <line x1="15" y1="15" x2="75" y2="65" stroke="#ef4444" stroke-width="2"/>
+                            <circle cx="45" cy="40" r="3" fill="#10b981"/>
+                        </svg>
+                    </div>
+                    <!-- No Solution -->
+                    <div class="system-item">
+                        <span>No Solution</span>
+                        <svg viewBox="0 0 90 80">
+                            <rect width="90" height="80" fill="#f8fafc" rx="4" stroke="#e2e8f0"/>
+                            <line x1="10" y1="40" x2="80" y2="40" stroke="#cbd5e1" stroke-width="1"/>
+                            <line x1="45" y1="10" x2="45" y2="70" stroke="#cbd5e1" stroke-width="1"/>
+                            <line x1="15" y1="45" x2="75" y2="15" stroke="#2563eb" stroke-width="2"/>
+                            <line x1="15" y1="65" x2="75" y2="35" stroke="#ef4444" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <!-- Infinite Solutions -->
+                    <div class="system-item">
+                        <span>Infinite Solutions</span>
+                        <svg viewBox="0 0 90 80">
+                            <rect width="90" height="80" fill="#f8fafc" rx="4" stroke="#e2e8f0"/>
+                            <line x1="10" y1="40" x2="80" y2="40" stroke="#cbd5e1" stroke-width="1"/>
+                            <line x1="45" y1="10" x2="45" y2="70" stroke="#cbd5e1" stroke-width="1"/>
+                            <line x1="15" y1="60" x2="75" y2="20" stroke="#2563eb" stroke-width="4"/>
+                            <line x1="15" y1="60" x2="75" y2="20" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 3"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> Parallel lines have <em>equal slopes</em> (m<sub>1</sub> = m<sub>2</sub>). Perpendicular lines have <em>negative reciprocal slopes</em> (m<sub>1</sub> · m<sub>2</sub> = -1).
+                <strong>SAT Tip:</strong> Convert system equations into <em>y = mx + b</em> form immediately to compare slopes and intercepts visually!
             </div>
         </div>
 
+        <!-- TOPIC 2: QUADRATIC EQUATIONS -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Slope-Intercept Form</span>
-                <span class="category-tag">Algebra</span>
+                <span class="card-title">2. Quadratic Equations</span>
+                <span class="category-tag">Topic 02</span>
             </div>
+
             <div class="formula-box">
-                <span class="math">y = mx + b</span>
+                <div class="math">Standard: y = ax² + bx + c</div>
+                <div class="math math-line">Vertex: y = a(x - h)² + k</div>
+                <div class="math math-line">Factored: y = a(x - p)(x - q)</div>
             </div>
-            <p class="description">The standard representation of a linear equation where <em>m</em> is the slope and <em>b</em> is the y-intercept (0, b).</p>
+
+            <div class="description">
+                <div class="section-subhead">Key Properties & Rules</div>
+                <ul>
+                    <li><strong>Vertex Form:</strong> If <em>a > 0</em>, parabola opens UP (has a <strong>minimum</strong> y-value at <em>k</em>). If <em>a < 0</em>, opens DOWN (has a <strong>maximum</strong> y-value at <em>k</em>).</li>
+                    <li><strong>Factored Form:</strong> Set <em>y = 0</em> to find x-intercepts directly at <em>x = p</em> and <em>x = q</em>.</li>
+                    <li><strong>Quadratic Formula:</strong> x = (-b ± √(b² - 4ac)) / (2a)</li>
+                    <li><strong>Discriminant (D = b² - 4ac):</strong> 
+                        <br>&bull; D > 0: 2 Real solutions
+                        <br>&bull; D = 0: 1 Real solution
+                        <br>&bull; D < 0: 0 Real / 2 Complex solutions
+                    </li>
+                    <li><strong>Sum & Product of Roots:</strong> 
+                        <br>&bull; Sum (r₁ + r₂) = -b / a
+                        <br>&bull; Product (r₁ · r₂) = c / a
+                    </li>
+                </ul>
+            </div>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> If given Point-Slope form <code>y - y<sub>1</sub> = m(x - x<sub>1</sub>)</code>, convert to slope-intercept for quick identification of intercept.
+                <strong>SAT Tip:</strong> The x-coordinate of the vertex lies exactly halfway between the roots: <code>x = -b / (2a)</code> or <code>(p + q) / 2</code>.
             </div>
         </div>
 
+        <!-- TOPIC 3: FUNCTION TRANSFORMATIONS -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Midpoint Formula</span>
-                <span class="category-tag">Geometry</span>
+                <span class="card-title">3. Function Transformations</span>
+                <span class="category-tag">Topic 03</span>
             </div>
+
             <div class="formula-box">
-                <span class="math">M = ((x<sub>1</sub> + x<sub>2</sub>)/2, (y<sub>1</sub> + y<sub>2</sub>)/2)</span>
+                <div class="math">y = a · f(x ± h) ± k</div>
             </div>
-            <p class="description">Finds the exact center point between two coordinate points.</p>
+
+            <div class="description">
+                <p>Rules for shifting and reflecting any base graph <em>y = f(x)</em>:</p>
+                <ul>
+                    <li><strong>Shift Up by K units:</strong> <code>y = f(x) + k</code></li>
+                    <li><strong>Shift Down by K units:</strong> <code>y = f(x) - k</code></li>
+                    <li><strong>Shift Left by H units:</strong> <code>y = f(x + h)</code></li>
+                    <li><strong>Shift Right by H units:</strong> <code>y = f(x - h)</code></li>
+                    <li><strong>Reflect over X-axis:</strong> <code>y = -f(x)</code> (flips vertically)</li>
+                    <li><strong>Reflect over Y-axis:</strong> <code>y = f(-x)</code> (flips horizontally)</li>
+                </ul>
+            </div>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> Simply calculate the average of the x-coordinates and the average of the y-coordinates.
+                <strong>SAT Tip:</strong> Horizontal shifts move in the <em>opposite</em> direction of the sign! <code>f(x + 5)</code> shifts left, <code>f(x - 5)</code> shifts right.
             </div>
         </div>
 
+        <!-- TOPIC 4: EXPONENTIAL EQUATIONS -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Distance Formula</span>
-                <span class="category-tag">Geometry</span>
+                <span class="card-title">4. Exponential Equations</span>
+                <span class="category-tag">Topic 04</span>
             </div>
+
             <div class="formula-box">
-                <span class="math">d = √[(x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup>]</span>
+                <div class="math">General Form: f(x) = a · bˣ</div>
+                <div class="math math-line">Growth/Decay: y = a(1 ± r/100)ᵗ</div>
             </div>
-            <p class="description">Calculates the straight-line distance between two points in a coordinate plane.</p>
+
+            <div class="description">
+                <div class="section-subhead">Base Behavior</div>
+                <ul>
+                    <li><strong>Exponential Growth:</strong> Base <em>b > 1</em>.</li>
+                    <li><strong>Exponential Decay:</strong> Base <em>0 < b < 1</em>.</li>
+                </ul>
+
+                <div class="section-subhead">Percentage Formula Breakdown</div>
+                <ul>
+                    <li><strong>a:</strong> Initial / Principal amount</li>
+                    <li><strong>r:</strong> Percent rate of increase (+) or decrease (-)</li>
+                    <li><strong>t:</strong> Time interval / periods</li>
+                </ul>
+            </div>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> This is just the Pythagorean Theorem (a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>) in disguise! Draw a right triangle on the grid if you forget it.
+                <strong>SAT Tip:</strong> Look closely at time units! If growth doubles every 3 hours, the exponent should be <code>t / 3</code>.
             </div>
         </div>
 
-        <!-- Quadratics & Advanced Math -->
+        <!-- TOPIC 5: EXPONENTS AND ROOTS -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Quadratic Formula</span>
-                <span class="category-tag">Advanced Math</span>
+                <span class="card-title">5. Exponents & Roots</span>
+                <span class="category-tag">Topic 05</span>
             </div>
+
             <div class="formula-box">
-                <span class="math">x = [-b ± √(b<sup>2</sup> - 4ac)] / 2a</span>
+                <div class="math">a<sup>m/n</sup> = ⁿ√(aᵐ) = (ⁿ√a)ᵐ</div>
             </div>
-            <p class="description">Solves for x in any quadratic equation in standard form: <em>ax<sup>2</sup> + bx + c = 0</em>.</p>
+
+            <div class="description">
+                <div class="section-subhead">Exponent Rules</div>
+                <ul>
+                    <li><strong>Product:</strong> aᵐ · aⁿ = aᵐ⁺ⁿ</li>
+                    <li><strong>Quotient:</strong> aᵐ / aⁿ = aᵐ⁻ⁿ</li>
+                    <li><strong>Power:</strong> (aᵐ)ⁿ = aᵐᵐⁿ</li>
+                    <li><strong>Negative:</strong> a⁻ⁿ = 1 / aⁿ</li>
+                    <li><strong>Zero Exponent:</strong> a⁰ = 1</li>
+                </ul>
+
+                <div class="section-subhead">Radical Rules</div>
+                <ul>
+                    <li><strong>Product:</strong> √(a · b) = √a · √b</li>
+                    <li><strong>Quotient:</strong> √(a / b) = √a / √b</li>
+                </ul>
+            </div>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> Ensure the equation is set to equal 0 before extracting <em>a</em>, <em>b</em>, and <em>c</em>.
+                <strong>SAT Tip:</strong> To solve radical equations, isolate the radical first before squaring both sides. Always check for <em>extraneous solutions</em>!
             </div>
         </div>
 
+        <!-- TOPIC 6: CIRCLES -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">The Discriminant</span>
-                <span class="category-tag">Advanced Math</span>
+                <span class="card-title">6. Circles</span>
+                <span class="category-tag">Topic 06</span>
             </div>
+
             <div class="formula-box">
-                <span class="math">D = b<sup>2</sup> - 4ac</span>
+                <div class="math">(x - h)² + (y - k)² = r²</div>
             </div>
-            <p class="description">Determines the number and type of solutions for a quadratic equation.</p>
+
+            <div class="description">
+                <div class="section-subhead">Center-Radius Form</div>
+                <p>Center is at <strong>(h, k)</strong> and radius is <strong>r</strong>.</p>
+
+                <div class="section-subhead">Sector Proportions Ratio</div>
+                <div class="formula-box" style="margin: 0.5rem 0;">
+                    <div class="math">θ° / 360° = Arc Length / 2πr = Sector Area / πr²</div>
+                </div>
+
+                <div class="section-subhead">Circle Theorems</div>
+                <ul>
+                    <li><strong>Tangent Rule:</strong> A tangent line is perpendicular to the radius at the point of contact.</li>
+                    <li><strong>Inscribed Angle:</strong> Measure of inscribed angle is half of central angle intercepting the same arc.</li>
+                </ul>
+            </div>
+
             <div class="tip-box">
-                <strong>D > 0:</strong> 2 Real Solutions<br>
-                <strong>D = 0:</strong> 1 Real Solution<br>
-                <strong>D < 0:</strong> 0 Real Solutions (2 Complex)
+                <strong>SAT Tip:</strong> If given an unformatted equation, complete the square for both <em>x</em> and <em>y</em> terms to find (h, k) and r².
             </div>
         </div>
 
+        <!-- TOPIC 7: TRIGONOMETRY -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Vertex of a Parabola</span>
-                <span class="category-tag">Advanced Math</span>
+                <span class="card-title">7. Trigonometry</span>
+                <span class="category-tag">Topic 07</span>
             </div>
+
             <div class="formula-box">
-                <span class="math">x = -b / (2a)</span>
+                <div class="math">SOH - CAH - TOA</div>
+                <div class="math math-line">a² + b² = c²</div>
             </div>
-            <p class="description">Finds the x-coordinate of the vertex (and the axis of symmetry) for <em>y = ax<sup>2</sup> + bx + c</em>.</p>
+
+            <div class="description">
+                <div class="section-subhead">Right Triangle Visual</div>
+                <div class="visual-container">
+                    <svg viewBox="0 0 220 120">
+                        <polygon points="30,100 180,100 180,20" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+                        <polyline points="168,100 168,88 180,88" fill="none" stroke="#1d4ed8" stroke-width="1.5"/>
+                        <path d="M 55 100 A 25 25 0 0 0 49 88" fill="none" stroke="#d46b08" stroke-width="2"/>
+                        <text x="38" y="93" font-size="12" fill="#d46b08" font-weight="bold">θ</text>
+                        <text x="105" y="115" font-size="11" fill="#64748b" font-weight="bold">Adjacent (a)</text>
+                        <text x="187" y="65" font-size="11" fill="#64748b" font-weight="bold">Opposite (b)</text>
+                        <text x="95" y="52" font-size="11" fill="#2563eb" font-weight="bold">Hypotenuse (c)</text>
+                    </svg>
+                </div>
+
+                <div class="section-subhead">Complementary Trig Ratios</div>
+                <p>If <strong>∠A + ∠B = 90°</strong> (complementary angles):</p>
+                <ul>
+                    <li><code>sin(A) = cos(B)</code></li>
+                    <li><code>cos(A) = sin(B)</code></li>
+                    <li><code>tan(A) = 1 / tan(B)</code></li>
+                </ul>
+            </div>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> Plug the x-value back into the original equation to find the y-coordinate of the vertex (minimum or maximum value).
+                <strong>SAT Tip:</strong> Whenever <code>sin(x) = cos(y)</code>, set <code>x + y = 90°</code> to solve quickly!
             </div>
         </div>
 
+        <!-- TOPIC 8: STATISTICAL MEASURES -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Vertex Form</span>
-                <span class="category-tag">Advanced Math</span>
+                <span class="card-title">8. Statistical Measures</span>
+                <span class="category-tag">Topic 08</span>
             </div>
-            <div class="formula-box">
-                <span class="math">y = a(x - h)<sup>2</sup> + k</span>
+
+            <div class="description" style="margin-top: 0.5rem;">
+                <ul>
+                    <li><strong>Mean:</strong> The average. Calculated by dividing the sum of all values by the count (n).</li>
+                    <li><strong>Median:</strong> The middle score. Order data from least to greatest; position is located at <em>(n + 1) / 2</em>. If <em>n</em> is even, take the average of the two middle values.</li>
+                    <li><strong>Mode:</strong> The value that appears <strong>most frequently</strong> in a data set. A set can have one mode, multiple modes, or no mode.</li>
+                    <li><strong>Range:</strong> Difference between maximum and minimum value (Max - Min).</li>
+                    <li><strong>Standard Deviation:</strong> Measures how spread out data is relative to the mean.</li>
+                    <li><strong>Outlier:</strong> Extreme value far from the rest; distorts the mean, but has little impact on the median.</li>
+                </ul>
             </div>
-            <p class="description">A quadratic form where <em>(h, k)</em> represents the explicit vertex of the parabola.</p>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> Pay attention to signs! In <em>(x - 3)<sup>2</sup> + 5</em>, the vertex is at (3, 5).
+                <strong>SAT Tip:</strong> Adding an extreme outlier increases Range & Standard Deviation, pulls the Mean toward it, but leaves the Median stable.
             </div>
         </div>
 
+        <!-- TOPIC 9: BOX PLOTS -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Sum & Product of Roots</span>
-                <span class="category-tag">Advanced Math</span>
+                <span class="card-title">9. Box Plots</span>
+                <span class="category-tag">Topic 09</span>
             </div>
-            <div class="formula-box">
-                <span class="math">Sum = -b / a &nbsp;|&nbsp; Product = c / a</span>
+
+            <div class="formula-box" style="padding: 0.5rem;">
+                <svg viewBox="0 0 280 50">
+                    <line x1="20" y1="25" x2="70" y2="25" stroke="#2563eb" stroke-width="2"/>
+                    <line x1="210" y1="25" x2="260" y2="25" stroke="#2563eb" stroke-width="2"/>
+                    <line x1="20" y1="15" x2="20" y2="35" stroke="#2563eb" stroke-width="2"/>
+                    <line x1="260" y1="15" x2="260" y2="35" stroke="#2563eb" stroke-width="2"/>
+                    <rect x="70" y="10" width="140" height="30" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+                    <line x1="130" y1="10" x2="130" y2="40" stroke="#1d4ed8" stroke-width="3"/>
+                    <text x="20" y="46" font-size="9" fill="#1e293b" text-anchor="middle" font-weight="bold">Min</text>
+                    <text x="70" y="46" font-size="9" fill="#1e293b" text-anchor="middle" font-weight="bold">Q₁</text>
+                    <text x="130" y="46" font-size="9" fill="#1d4ed8" text-anchor="middle" font-weight="bold">Median</text>
+                    <text x="210" y="46" font-size="9" fill="#1e293b" text-anchor="middle" font-weight="bold">Q₃</text>
+                    <text x="260" y="46" font-size="9" fill="#1e293b" text-anchor="middle" font-weight="bold">Max</text>
+                </svg>
             </div>
-            <p class="description">Quickly finds the sum or product of the solutions of <em>ax<sup>2</sup> + bx + c = 0</em> without solving.</p>
+
+            <div class="description">
+                <div class="section-subhead">How to Calculate Median & Range from a Box Plot</div>
+                <ul>
+                    <li><strong>Finding the Median:</strong> Look directly at the vertical line drawn inside the central box. Read the corresponding number on the number line below.</li>
+                    <li><strong>Finding the Range:</strong> Locate the far right end of the right whisker (Maximum) and the far left end of the left whisker (Minimum). Subtract: <code>Range = Max - Min</code>.</li>
+                    <li><strong>Finding the IQR (Interquartile Range):</strong> Subtract the value at the start of the box (Q₁) from the value at the end of the box (Q₃): <code>IQR = Q₃ - Q₁</code>.</li>
+                </ul>
+            </div>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> Saves massive amounts of time on high-level polynomial questions.
+                <strong>SAT Tip:</strong> Each section of a box plot (left whisker, left box half, right box half, right whisker) contains exactly <strong>25%</strong> of the total data points!
             </div>
         </div>
 
-        <!-- Problem Solving & Data -->
+        <!-- TOPIC 10: EXPERIMENTAL DESIGN -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Exponential Growth / Decay</span>
-                <span class="category-tag">Data Analysis</span>
+                <span class="card-title">10. Experimental Design</span>
+                <span class="category-tag">Topic 10</span>
             </div>
-            <div class="formula-box">
-                <span class="math">y = a(1 ± r)<sup>t</sup></span>
+
+            <div class="description">
+                <ul>
+                    <li><strong>Population:</strong> The entire group under study that conclusions apply to.</li>
+                    <li><strong>Random Sample:</strong> Selection method where every individual has an equal selection probability; essential for generalizing findings to the whole population.</li>
+                    <li><strong>Sample Bias:</strong> Systematic flaw in sampling that skews data (e.g., non-random or voluntary response sampling).</li>
+                    <li><strong>Margin of Error:</strong> Calculated range of confidence around survey results. Increasing <em>sample size</em> reduces the margin of error.</li>
+                </ul>
             </div>
-            <p class="description">Models growth (+r) or decay (-r). <em>a</em> is initial amount, <em>r</em> is percentage rate (decimal), <em>t</em> is time.</p>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> For compound interest, use <code>A = P(1 + r/n)<sup>nt</sup></code> where <em>n</em> is compounding frequency per period.
+                <strong>SAT Tip:</strong> Results can only be generalized to the population if sample is <strong>randomly selected</strong>. Cause-and-effect can only be proven via <strong>random assignment</strong>.
             </div>
         </div>
 
+        <!-- TOPIC 11: ABSOLUTE VALUE EQUATIONS -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Percent Change</span>
-                <span class="category-tag">Problem Solving</span>
+                <span class="card-title">11. Absolute Value Equations</span>
+                <span class="category-tag">Topic 11</span>
             </div>
-            <div class="formula-box">
-                <span class="math">% Change = [(New - Old) / Old] × 100</span>
+
+            <div class="formula-box" style="padding: 0.5rem;">
+                <svg viewBox="0 0 280 75">
+                    <line x1="20" y1="60" x2="260" y2="60" stroke="#cbd5e1" stroke-width="2"/>
+                    <line x1="140" y1="10" x2="140" y2="70" stroke="#cbd5e1" stroke-width="2"/>
+                    <path d="M 40 10 L 140 60 L 240 10" fill="none" stroke="#2563eb" stroke-width="3"/>
+                    <circle cx="140" cy="60" r="4" fill="#1d4ed8"/>
+                    <text x="140" y="22" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="bold">y = |x - h| + k</text>
+                </svg>
             </div>
-            <p class="description">Calculates percentage increase or decrease relative to the original value.</p>
+
+            <div class="description">
+                <div class="section-subhead">Core Concept</div>
+                <p>Absolute value represents the <strong>distance from zero</strong> on a number line, meaning distance is always non-negative (|x| ≥ 0).</p>
+
+                <div class="section-subhead">Solving Rules</div>
+                <ul>
+                    <li><strong>Basic Equation:</strong> <code>|x| = a</code> splits into two cases: <em>x = a</em> or <em>x = -a</em> (for a ≥ 0).</li>
+                    <li><strong>Expression inside:</strong> <code>|ax + b| = c</code> splits into <em>ax + b = c</em> or <em>ax + b = -c</em>.</li>
+                    <li><strong>Extraneous Solutions:</strong> Always plug answers back into the original equation to check for invalid results!</li>
+                </ul>
+            </div>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> Always divide by the <em>original (Old)</em> value, never the new value!
+                <strong>SAT Tip:</strong> If an absolute value equation equals a negative number (e.g., <code>|2x + 1| = -5</code>), there are <strong>no solutions</strong>!
             </div>
         </div>
 
+        <!-- TOPIC 12: INEQUALITIES -->
         <div class="card">
             <div class="card-header">
-                <span class="card-title">Circle Equation</span>
-                <span class="category-tag">Geometry</span>
+                <span class="card-title">12. Inequalities</span>
+                <span class="category-tag">Topic 12</span>
             </div>
-            <div class="formula-box">
-                <span class="math">(x - h)<sup>2</sup> + (y - k)<sup>2</sup> = r<sup>2</sup></span>
-            </div>
-            <p class="description">Equation of a circle in a coordinate plane centered at <em>(h, k)</em> with radius <em>r</em>.</p>
-            <div class="tip-box">
-                <strong>SAT Tip:</strong> Be prepared to "complete the square" to put general circle equations into this standard form!
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <span class="card-title">Arc Length & Sector Area</span>
-                <span class="category-tag">Geometry</span>
-            </div>
-            <div class="formula-box">
-                <span class="math">Arc = (θ/360)×2πr &nbsp;|&nbsp; Area = (θ/360)×πr<sup>2</sup></span>
-            </div>
-            <p class="description">Calculates proportional fraction of circumference or total area for central angle <em>θ</em> in degrees.</p>
-            <div class="tip-box">
-                <strong>If θ is in Radians:</strong><br>
-                Arc Length = <em>r · θ</em> &nbsp;|&nbsp; Sector Area = <em>½ · r<sup>2</sup> · θ</em>
-            </div>
-        </div>
+            <!-- Visual box now contains BOTH 1D Number Line AND 2D Linear Function Inequality Graph -->
+            <div class="formula-box" style="padding: 0.5rem;">
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+                    <!-- 1D Number Line Graph -->
+                    <svg viewBox="0 0 280 50">
+                        <line x1="20" y1="25" x2="260" y2="25" stroke="#cbd5e1" stroke-width="2"/>
+                        <line x1="70" y1="25" x2="210" y2="25" stroke="#2563eb" stroke-width="5"/>
+                        <circle cx="70" cy="25" r="4" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+                        <circle cx="210" cy="25" r="4" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+                        <text x="70" y="42" font-size="10" fill="#0f172a" text-anchor="middle" font-weight="bold">-a</text>
+                        <text x="210" y="42" font-size="10" fill="#0f172a" text-anchor="middle" font-weight="bold">a</text>
+                        <text x="140" y="15" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="bold">|x| &lt; a  ⇒  -a &lt; x &lt; a</text>
+                    </svg>
 
-        <div class="card">
-            <div class="card-header">
-                <span class="card-title">Basic Trigonometric Ratios</span>
-                <span class="category-tag">Trigonometry</span>
+                    <!-- 2D Linear Function Inequality Graph (y <= mx + b) -->
+                    <svg viewBox="0 0 280 90">
+                        <defs>
+                            <!-- Pattern for half-plane shading -->
+                            <pattern id="diagonalHatch" width="6" height="6" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+                                <line x1="0" y1="0" x2="0" y2="6" stroke="#93c5fd" stroke-width="2" />
+                            </pattern>
+                        </defs>
+                        <!-- Axes -->
+                        <line x1="30" y1="75" x2="250" y2="75" stroke="#cbd5e1" stroke-width="1.5"/>
+                        <line x1="140" y1="10" x2="140" y2="85" stroke="#cbd5e1" stroke-width="1.5"/>
+                        <!-- Shaded Region y <= mx + b -->
+                        <polygon points="40,75 240,15 240,75" fill="url(#diagonalHatch)" opacity="0.7"/>
+                        <!-- Boundary Line y = mx + b -->
+                        <line x1="40" y1="75" x2="240" y2="15" stroke="#2563eb" stroke-width="2.5"/>
+                        <!-- Text Label -->
+                        <text x="140" y="30" font-size="11" fill="#1d4ed8" text-anchor="middle" font-weight="bold">y ≤ mx + b</text>
+                    </svg>
+                </div>
             </div>
-            <div class="formula-box">
-                <span class="math">SOH - CAH - TOA</span>
-            </div>
-            <p class="description">
-                sin(θ) = Opp / Hyp<br>
-                cos(θ) = Adj / Hyp<br>
-                tan(θ) = Opp / Adj
-            </p>
-            <div class="tip-box">
-                <strong>Complement Rule:</strong> <code>sin(x°) = cos(90° - x°)</code>. If sin(A) = cos(B), then A + B = 90°.
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <span class="card-title">Pythagorean Identity</span>
-                <span class="category-tag">Trigonometry</span>
+            <div class="description">
+                <div class="section-subhead">Compound & Linear Inequalities</div>
+                <ul>
+                    <li><strong>Less Than ("And"):</strong> <code>|x| < a</code> becomes <em>-a < x < a</em> (bounded interval).</li>
+                    <li><strong>Greater Than ("Or"):</strong> <code>|x| > a</code> becomes <em>x < -a</em> OR <em>x > a</em> (two outer rays).</li>
+                    <li><strong>2D Shading:</strong> For <em>y ≤ f(x)</em> shade <strong>below</strong> the line; for <em>y ≥ f(x)</em> shade <strong>above</strong>.</li>
+                </ul>
+
+                <div class="section-subhead">Graphing Boundary Rules</div>
+                <ul>
+                    <li><strong>Strict (&lt;, &gt;):</strong> Dashed line on 2D plane, open circle on 1D number line.</li>
+                    <li><strong>Inclusive (&le;, &ge;):</strong> Solid line on 2D plane, closed circle on 1D number line.</li>
+                </ul>
             </div>
-            <div class="formula-box">
-                <span class="math">sin<sup>2</sup>(θ) + cos<sup>2</sup>(θ) = 1</span>
-            </div>
-            <p class="description">Fundamental identity relating sine and cosine of any angle.</p>
+
             <div class="tip-box">
-                <strong>SAT Tip:</strong> Can be rewritten as <code>sin<sup>2</sup>(θ) = 1 - cos<sup>2</sup>(θ)</code> to simplify complex trigonometric expressions.
+                <strong>SAT Tip:</strong> Always <strong>flip the inequality sign</strong> whenever you multiply or divide both sides by a negative number!
             </div>
         </div>
 
