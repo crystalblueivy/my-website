@@ -129,10 +129,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Explicit width locked to half grid width minus gap */
             width: calc(50% - 13.5px);
             min-width: 320px;
             box-sizing: border-box;
+        }
+
+        .card-full {
+            width: 100%;
         }
 
         .card-title {
@@ -162,6 +165,32 @@
             object-fit: contain;
         }
 
+        /* Table Styling */
+        .diagnosis-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .diagnosis-table th {
+            background-color: var(--primary-navy);
+            color: #FFFFFF;
+            text-align: left;
+            padding: 10px 14px;
+            font-weight: 600;
+        }
+
+        .diagnosis-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #E1E8ED;
+            color: var(--text-dark);
+        }
+
+        .diagnosis-table tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
         @media (max-width: 768px) {
             .card {
                 width: 100%;
@@ -178,26 +207,26 @@
 
         <div class="student-info">
             <h1 class="student-name">Sebastián Solano Corona</h1>
-            <span class="report-date">AUGUST 25TH, 2026</span>
+            <span class="report-date">AUGUST 26TH, 2026</span>
         </div>
     </div>
 
     <!-- Executive Summary for Parents -->
     <div class="summary-card">
-        <p><strong>Sebastián is showing a solid math foundation on his diagnostic test!</strong> He demonstrated strong mastery in Geometry and Data Analysis. Going forward, our key priorities to unlock his score potential will be:</p>
+        <p><strong>Sebastián demonstrated encouraging problem-solving potential on his Digital SAT Math diagnostic!</strong> He scored a 480 on the Math section, showing fantastic mastery in Geometry & Trigonometry. Moving forward, our key coaching strategies to rapidly scale his score ceiling toward his goal of 650 points include:</p>
         <ul>
-            <li><strong>Push Module 1 Accuracy Above 90%:</strong> Over 60% of Sebastián’s missed questions were easy or medium difficulty. Cleaning these up is the quickest way to boost his score ceiling.</li>
-            <li><strong>Target Core High-Yield Topics:</strong> We will focus heavily on Algebra and Equivalent Expressions, which represent the largest portion of the exam.</li>
-            <li><strong>Eliminate Non-Conceptual Errors:</strong> We will train strategies to catch tricky wording, avoid minor calculation slips, and leverage the built-in Desmos graphing calculator.</li>
+            <li><strong>Build Module 1 Precision & Unlock Advanced Module 2:</strong> 57% of Sebastián's total errors occurred in Module 1, with over 60% of those missed questions categorized as easy or medium difficulty. Boosting Module 1 accuracy past 80% is our top priority to route him into the Hard Module 2 and immediately lift his score cap.</li>
+            <li><strong>Master Core High-Yield Math Domains:</strong> Algebra and Advanced Math accounted for 69% of all missed questions on this exam. Intensive practice with linear equations and quadratic functions will build vital speed and confidence.</li>
+            <li><strong>Strategic Tool Utilization & Careless Error Prevention:</strong> We will train Sebastián to systematically apply the Desmos graphing calculator to bypass tedious algebra steps and avoid simple arithmetic or reading slips.</li>
         </ul>
     </div>
 
     <!-- Charts Dashboard -->
     <div class="dashboard-grid">
         
-        <!-- Chart 1: Score Progression -->
+        <!-- Chart 1: Target Score vs Current Score -->
         <div class="card">
-            <h2 class="card-title">Total Math Score Progression</h2>
+            <h2 class="card-title">Current vs. Target Math Score</h2>
             <div class="chart-wrapper">
                 <canvas id="scoreProgressionChart"></canvas>
             </div>
@@ -225,6 +254,47 @@
             <img src="https://github.com/crystalblueivy/my-website/blob/main/SebastianSolanoRoadmap.png?raw=true" alt="Roadmap" class="roadmap-img">
         </div>
 
+        <!-- Table: Diagnosis of Errors -->
+        <div class="card card-full">
+            <h2 class="card-title">Diagnosis of Errors</h2>
+            <table class="diagnosis-table">
+                <thead>
+                    <tr>
+                        <th>Domain / Error Category</th>
+                        <th>Missed Questions</th>
+                        <th>Share of Total Errors (%)</th>
+                        <th>Primary Action Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Algebra</strong></td>
+                        <td>6</td>
+                        <td>38%</td>
+                        <td>Reinforce single/two-variable linear equations and systems of equations drills.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advanced Math</strong></td>
+                        <td>5</td>
+                        <td>31%</td>
+                        <td>Target non-linear functions, quadratic equations, and expression simplification strategies.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Problem-Solving & Data Analysis</strong></td>
+                        <td>3</td>
+                        <td>19%</td>
+                        <td>Review percentage growth/decay formulas, ratios, and single-variable data distributions.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Geometry & Trigonometry</strong></td>
+                        <td>2</td>
+                        <td>12%</td>
+                        <td>Maintain current strength; review circle equations and surface area/volume formulas.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 
@@ -234,16 +304,16 @@
     Chart.defaults.font.family = "'Segoe UI', 'Helvetica', 'Arial', sans-serif";
     Chart.defaults.color = '#2C3E50';
 
-    // 1. Total Math Score Progression Chart
+    // 1. Current vs Target Math Score Chart (Updated to 650 Goal)
     const ctxScore = document.getElementById('scoreProgressionChart').getContext('2d');
     new Chart(ctxScore, {
         type: 'bar',
         data: {
-            labels: ['DSAT 1'],
+            labels: ['Current Score', 'Target Score'],
             datasets: [{
                 label: 'Math Score',
-                data: [480],
-                backgroundColor: '#4A90E2',
+                data: [480, 650],
+                backgroundColor: ['#4A90E2', '#1B365D'],
                 borderRadius: 6,
                 barThickness: 50
             }]
@@ -280,7 +350,7 @@
         }
     });
 
-    // 2. Accuracy by Module Chart
+    // 2. Accuracy by Module Chart (Module 1: 14/22 = 64%, Module 2 Easy: 15/22 = 68%)
     const ctxModule = document.getElementById('moduleAccuracyChart').getContext('2d');
     new Chart(ctxModule, {
         type: 'bar',
@@ -289,13 +359,13 @@
             datasets: [
                 {
                     label: 'Module 1',
-                    data: [65],
+                    data: [64],
                     backgroundColor: '#4A90E2',
                     borderRadius: 4
                 },
                 {
                     label: 'Module 2 (Easy)',
-                    data: [73],
+                    data: [68],
                     backgroundColor: '#F5A623',
                     borderRadius: 4
                 }
@@ -336,14 +406,14 @@
         }
     });
 
-    // 3. Domain Error Distribution Chart
+    // 3. Domain Error Distribution Chart (Algebra: 6, Advanced Math: 5, Data: 3, Geo: 2 -> 38%, 31%, 19%, 12%)
     const ctxDomain = document.getElementById('domainErrorChart').getContext('2d');
     new Chart(ctxDomain, {
         type: 'doughnut',
         data: {
             labels: ['Algebra', 'Advanced Math', 'Problem-Solving & Data Analysis', 'Geometry & Trigonometry'],
             datasets: [{
-                data: [38, 31, 18, 13],
+                data: [38, 31, 19, 12],
                 backgroundColor: [
                     '#F5A623',
                     '#41B883',
