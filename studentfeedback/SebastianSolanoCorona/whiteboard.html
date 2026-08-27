@@ -71,7 +71,8 @@
             margin-bottom: 10px;
         }
 
-        ul.topic-list li a.full-link {
+        /* Active Link Styles */
+        a.full-link, a.main-btn, a.stats-btn {
             display: block;
             padding: 12px 18px;
             background-color: #f1f5f9;
@@ -84,11 +85,25 @@
             border: 1px solid #e2e8f0;
         }
 
-        ul.topic-list li a.full-link:hover {
+        a.full-link:hover, a.main-btn:hover {
             background-color: #e2e8f0;
             color: #1d4ed8;
             transform: translateX(4px);
             border-color: #cbd5e1;
+        }
+
+        /* Disabled Button Styles */
+        .disabled-btn {
+            display: block;
+            padding: 12px 18px;
+            background-color: #f8fafc;
+            color: #94a3b8;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+            cursor: not-allowed;
+            user-select: none;
         }
 
         .mock-row {
@@ -97,42 +112,34 @@
             align-items: center;
         }
 
-        .mock-row a.main-btn {
+        .mock-row .main-btn, .mock-row .disabled-btn:not(.stats-btn) {
             flex: 1;
-            padding: 12px 18px;
-            background-color: #f1f5f9;
-            color: #2563eb;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid #e2e8f0;
         }
 
-        .mock-row a.main-btn:hover {
-            background-color: #e2e8f0;
-            color: #1d4ed8;
-            border-color: #cbd5e1;
-        }
-
-        .mock-row a.stats-btn {
+        a.stats-btn {
             padding: 12px 20px;
             background-color: #0066c0;
             color: #ffffff;
-            text-decoration: none;
-            border-radius: 8px;
             font-size: 0.95rem;
             font-weight: 600;
-            transition: all 0.2s ease;
             border: 1px solid #0066c0;
             white-space: nowrap;
         }
 
-        .mock-row a.stats-btn:hover {
+        a.stats-btn:hover {
             background-color: #004c90;
             border-color: #004c90;
             transform: translateY(-1px);
+        }
+
+        span.stats-btn.disabled-btn {
+            padding: 12px 20px;
+            background-color: #e2e8f0;
+            color: #94a3b8;
+            border: 1px solid #cbd5e1;
+            font-size: 0.95rem;
+            font-weight: 600;
+            white-space: nowrap;
         }
 
         @media (max-width: 768px) {
@@ -146,73 +153,66 @@
 
     <div class="container">
 
-        <!-- Header Image -->
         <img src="https://crystalblueivy.github.io/my-website/WhiteboardsHeader.png" alt="Whiteboards Header" class="header-image">
 
-        <!-- Student Name -->
         <h1 class="student-name">Sebastián Solano Corona</h1>
 
-        <!-- Algebra -->
         <div class="category-header">Algebra</div>
         <ul class="topic-list">
             <li><a href="https://limnu.com/d/invited.html?b=B_YyPAf5PyTny2bo&amp;" class="full-link" target="_blank">Linear equations in 1 variable</a></li>
-            <li><a href="#" class="full-link" target="_blank">Linear functions</a></li>
-            <li><a href="#" class="full-link" target="_blank">Linear equations in two variables</a></li>
-            <li><a href="#" class="full-link" target="_blank">Systems of two linear equations in two variables</a></li>
-            <li><a href="#" class="full-link" target="_blank">Linear inequalities in one or two variables</a></li>
+            <li><span class="disabled-btn">Linear functions</span></li>
+            <li><span class="disabled-btn">Linear equations in two variables</span></li>
+            <li><span class="disabled-btn">Systems of two linear equations in two variables</span></li>
+            <li><span class="disabled-btn">Linear inequalities in one or two variables</span></li>
         </ul>
 
-        <!-- Advanced Math -->
         <div class="category-header">Advanced Math</div>
         <ul class="topic-list">
-            <li><a href="#" class="full-link" target="_blank">Equivalent expressions</a></li>
-            <li><a href="#" class="full-link" target="_blank">Nonlinear functions</a></li>
-            <li><a href="#" class="full-link" target="_blank">Nonlinear equations in one variable and systems of equations in two variables</a></li>
+            <li><span class="disabled-btn">Equivalent expressions</span></li>
+            <li><span class="disabled-btn">Nonlinear functions</span></li>
+            <li><span class="disabled-btn">Nonlinear equations in one variable and systems of equations in two variables</span></li>
         </ul>
 
-        <!-- Geometry and Trigonometry -->
         <div class="category-header">Geometry and Trigonometry</div>
         <ul class="topic-list">
-            <li><a href="#" class="full-link" target="_blank">Lines, angles, and triangles</a></li>
-            <li><a href="#" class="full-link" target="_blank">Right triangles and trigonometry</a></li>
-            <li><a href="#" class="full-link" target="_blank">Circles</a></li>
-            <li><a href="#" class="full-link" target="_blank">Area and volume</a></li>
+            <li><span class="disabled-btn">Lines, angles, and triangles</span></li>
+            <li><span class="disabled-btn">Right triangles and trigonometry</span></li>
+            <li><span class="disabled-btn">Circles</span></li>
+            <li><span class="disabled-btn">Area and volume</span></li>
         </ul>
 
-        <!-- Problem-Solving and Data Analysis -->
         <div class="category-header">Problem-Solving and Data Analysis</div>
         <ul class="topic-list">
-            <li><a href="#" class="full-link" target="_blank">Ratios, rates, proportional relationships, and units</a></li>
-            <li><a href="#" class="full-link" target="_blank">Percentages</a></li>
-            <li><a href="#" class="full-link" target="_blank">One variable data: Distributions and measures of center and spread</a></li>
-            <li><a href="#" class="full-link" target="_blank">Two-variable data: models and scatter plots</a></li>
-            <li><a href="#" class="full-link" target="_blank">Probability and conditional probability</a></li>
-            <li><a href="#" class="full-link" target="_blank">Inference from sample statistics and margin of error</a></li>
-            <li><a href="#" class="full-link" target="_blank">Evaluating statistical claims</a></li>
+            <li><span class="disabled-btn">Ratios, rates, proportional relationships, and units</span></li>
+            <li><span class="disabled-btn">Percentages</span></li>
+            <li><span class="disabled-btn">One variable data: Distributions and measures of center and spread</span></li>
+            <li><span class="disabled-btn">Two-variable data: models and scatter plots</span></li>
+            <li><span class="disabled-btn">Probability and conditional probability</span></li>
+            <li><span class="disabled-btn">Inference from sample statistics and margin of error</span></li>
+            <li><span class="disabled-btn">Evaluating statistical claims</span></li>
         </ul>
 
-        <!-- Mocks -->
         <div class="category-header">Mocks</div>
         <ul class="topic-list">
             <li class="mock-row">
-                <a href="#" class="main-btn" target="_blank">DSAT #1</a>
+                <span class="disabled-btn">DSAT #1</span>
                 <a href="https://crystalblueivy.github.io/my-website/studentfeedback/SebastianSolanoCorona/dsat1.html" class="stats-btn" target="_blank">Stats</a>
             </li>
             <li class="mock-row">
-                <a href="#" class="main-btn" target="_blank">DSAT #2</a>
-                <a href="#" class="stats-btn" target="_blank">Stats</a>
+                <span class="disabled-btn">DSAT #2</span>
+                <span class="stats-btn disabled-btn">Stats</span>
             </li>
             <li class="mock-row">
-                <a href="#" class="main-btn" target="_blank">DSAT #3</a>
-                <a href="#" class="stats-btn" target="_blank">Stats</a>
+                <span class="disabled-btn">DSAT #3</span>
+                <span class="stats-btn disabled-btn">Stats</span>
             </li>
             <li class="mock-row">
-                <a href="#" class="main-btn" target="_blank">Bluebook #1</a>
-                <a href="#" class="stats-btn" target="_blank">Stats</a>
+                <span class="disabled-btn">Bluebook #1</span>
+                <span class="stats-btn disabled-btn">Stats</span>
             </li>
             <li class="mock-row">
-                <a href="#" class="main-btn" target="_blank">Bluebook #2</a>
-                <a href="#" class="stats-btn" target="_blank">Stats</a>
+                <span class="disabled-btn">Bluebook #2</span>
+                <span class="stats-btn disabled-btn">Stats</span>
             </li>
         </ul>
 
