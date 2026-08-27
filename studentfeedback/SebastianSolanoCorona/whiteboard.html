@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Topics & Mocks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .student-name {
+            text-align: center;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0b3b60;
+            margin-bottom: 30px;
+        }
+
+        .category-header {
+            background-color: #0066c0;
+            color: white;
+            text-align: center;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 102, 192, 0.2);
+        }
+
+        .category-header:first-of-type {
+            margin-top: 0;
+        }
+
+        ul.topic-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0 0 25px 0;
+        }
+
+        ul.topic-list li {
+            margin-bottom: 10px;
+        }
+
+        ul.topic-list li a.full-link {
+            display: block;
+            padding: 12px 18px;
+            background-color: #f1f5f9;
+            color: #2563eb;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        ul.topic-list li a.full-link:hover {
+            background-color: #e2e8f0;
+            color: #1d4ed8;
+            transform: translateX(4px);
+            border-color: #cbd5e1;
+        }
+
+        .mock-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .mock-row a.main-btn {
+            flex: 1;
+            padding: 12px 18px;
+            background-color: #f1f5f9;
+            color: #2563eb;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .mock-row a.main-btn:hover {
+            background-color: #e2e8f0;
+            color: #1d4ed8;
+            border-color: #cbd5e1;
+        }
+
+        .mock-row a.stats-btn {
+            padding: 12px 20px;
+            background-color: #0066c0;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 1px solid #0066c0;
+            white-space: nowrap;
+        }
+
+        .mock-row a.stats-btn:hover {
+            background-color: #004c90;
+            border-color: #004c90;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .student-name {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Header Image -->
+        <img src="https://crystalblueivy.github.io/my-website/WhiteboardsHeader.png" alt="Whiteboards Header" class="header-image">
+
+        <!-- Student Name -->
+        <h1 class="student-name">Sebastián Solano Corona</h1>
+
+        <!-- Algebra -->
+        <div class="category-header">Algebra</div>
+        <ul class="topic-list">
+            <li><a href="https://limnu.com/d/invited.html?b=B_YyPAf5PyTny2bo&amp;" class="full-link" target="_blank">Linear equations in 1 variable</a></li>
+            <li><a href="#" class="full-link" target="_blank">Linear functions</a></li>
+            <li><a href="#" class="full-link" target="_blank">Linear equations in two variables</a></li>
+            <li><a href="#" class="full-link" target="_blank">Systems of two linear equations in two variables</a></li>
+            <li><a href="#" class="full-link" target="_blank">Linear inequalities in one or two variables</a></li>
+        </ul>
+
+        <!-- Advanced Math -->
+        <div class="category-header">Advanced Math</div>
+        <ul class="topic-list">
+            <li><a href="#" class="full-link" target="_blank">Equivalent expressions</a></li>
+            <li><a href="#" class="full-link" target="_blank">Nonlinear functions</a></li>
+            <li><a href="#" class="full-link" target="_blank">Nonlinear equations in one variable and systems of equations in two variables</a></li>
+        </ul>
+
+        <!-- Geometry and Trigonometry -->
+        <div class="category-header">Geometry and Trigonometry</div>
+        <ul class="topic-list">
+            <li><a href="#" class="full-link" target="_blank">Lines, angles, and triangles</a></li>
+            <li><a href="#" class="full-link" target="_blank">Right triangles and trigonometry</a></li>
+            <li><a href="#" class="full-link" target="_blank">Circles</a></li>
+            <li><a href="#" class="full-link" target="_blank">Area and volume</a></li>
+        </ul>
+
+        <!-- Problem-Solving and Data Analysis -->
+        <div class="category-header">Problem-Solving and Data Analysis</div>
+        <ul class="topic-list">
+            <li><a href="#" class="full-link" target="_blank">Ratios, rates, proportional relationships, and units</a></li>
+            <li><a href="#" class="full-link" target="_blank">Percentages</a></li>
+            <li><a href="#" class="full-link" target="_blank">One variable data: Distributions and measures of center and spread</a></li>
+            <li><a href="#" class="full-link" target="_blank">Two-variable data: models and scatter plots</a></li>
+            <li><a href="#" class="full-link" target="_blank">Probability and conditional probability</a></li>
+            <li><a href="#" class="full-link" target="_blank">Inference from sample statistics and margin of error</a></li>
+            <li><a href="#" class="full-link" target="_blank">Evaluating statistical claims</a></li>
+        </ul>
+
+        <!-- Mocks -->
+        <div class="category-header">Mocks</div>
+        <ul class="topic-list">
+            <li class="mock-row">
+                <a href="#" class="main-btn" target="_blank">DSAT #1</a>
+                <a href="https://crystalblueivy.github.io/my-website/studentfeedback/SebastianSolanoCorona/dsat1.html" class="stats-btn" target="_blank">Stats</a>
+            </li>
+            <li class="mock-row">
+                <a href="#" class="main-btn" target="_blank">DSAT #2</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
+            </li>
+            <li class="mock-row">
+                <a href="#" class="main-btn" target="_blank">DSAT #3</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
+            </li>
+            <li class="mock-row">
+                <a href="#" class="main-btn" target="_blank">Bluebook #1</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
+            </li>
+            <li class="mock-row">
+                <a href="#" class="main-btn" target="_blank">Bluebook #2</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+</html>
