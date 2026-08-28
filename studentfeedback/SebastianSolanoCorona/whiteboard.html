@@ -16,7 +16,7 @@
             height: 100vh;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Prevents outer page scrollbars */
+            overflow: hidden;
         }
 
         body {
@@ -170,7 +170,7 @@
             <div class="dropdown">
                 <button class="dropbtn">Algebra</button>
                 <div class="dropdown-content">
-                    <a href="#" class="active-link" onclick="loadContent(event, 'https://limnu.com/d/invited.html?b=B_YyPAf5PyTny2bo&')">Linear equations in 1 variable</a>
+                    <a href="https://limnu.com/d/invited.html?b=B_YyPAf5PyTny2bo&" target="_blank" rel="noopener noreferrer" class="active-link">Linear equations in 1 variable</a>
                     <a href="#" class="disabled-link">Linear functions</a>
                     <a href="#" class="disabled-link">Linear equations in two variables</a>
                     <a href="#" class="disabled-link">Systems of two linear equations in two variables</a>
@@ -216,17 +216,6 @@
         </div>
 
     </div>
-
-    <script>
-        function loadContent(event, url) {
-            event.preventDefault();
-            if (url && url !== '#') {
-                const iframe = document.getElementById('contentViewer');
-                iframe.removeAttribute('srcdoc'); // Removes image override if switching to an external page
-                iframe.src = url;
-            }
-        }
-    </script>
 
 </body>
 </html>
