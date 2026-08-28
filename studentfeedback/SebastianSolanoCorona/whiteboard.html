@@ -76,10 +76,11 @@
             line-height: 1.2;
         }
 
-        .dropbtn:hover {
+        .dropdown:hover .dropbtn {
             background-color: #004c90;
         }
 
+        /* Dropdown Box with Hover Bridge */
         .dropdown-content {
             display: none;
             position: absolute;
@@ -90,9 +91,23 @@
             z-index: 10;
             top: 100%;
             left: 0;
-            margin-top: 5px;
+            margin-top: 0px;
             overflow: hidden;
             border: 1px solid #e2e8f0;
+        }
+
+        /* Invisible bridge above dropdown to prevent mouse hover dropouts */
+        .dropdown-content::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Active Subtopic Link */
@@ -131,10 +146,6 @@
 
         .dropdown-content a:last-child {
             border-bottom: none;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
         }
 
         /* Content Display Window */
