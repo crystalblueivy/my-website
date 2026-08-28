@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sebastián Solano Corona · Blue Ivy Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap">
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   BLUE IVY COACHING
+   --navy  #00336A  their brand navy, taken from blueivycoaching.com
+   --navy2 #173668  secondary navy from the same stylesheet
+   --blue  #0769BA  brighter blue, used for anything interactive
+   --ivy   #2C6E49  the "Ivy" half of the name — done / strong
+   ══════════════════════════════════════════════════════════════ */
+:root {
+  --paper:  #F6F7F4;
+  --card:   #FFFFFF;
+  --sunk:   #EAEDEB;
+  --ink:    #14181D;
+  --ink-2:  #566070;
+  --ink-3:  #8A93A0;
+  --hair:   #E0E4E3;
+  --hair-2: #C5CBCE;
+  --navy:   #00336A;
+  --navy2:  #173668;
+  --blue:   #0769BA;
+  --blue-w: #E7F0F7;
+  --blue-e: #C3D9E9;
+  --ivy:    #2C6E49;
+  --on-acc: #FFFFFF;
+  --blend:  multiply;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F1317; --card: #171C21; --sunk: #1E252B;
+    --ink: #E8ECEF; --ink-2: #A0AAB4; --ink-3: #76808B;
+    --hair: #272F36; --hair-2: #3A444D;
+    --navy: #7FB3E0; --navy2: #6FA4D4; --blue: #56A2DD;
+    --blue-w: #16232D; --blue-e: #294050;
+    --ivy: #55B27F;
+    --on-acc: #0C0F12; --blend: screen;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F1317; --card: #171C21; --sunk: #1E252B;
+  --ink: #E8ECEF; --ink-2: #A0AAB4; --ink-3: #76808B;
+  --hair: #272F36; --hair-2: #3A444D;
+  --navy: #7FB3E0; --navy2: #6FA4D4; --blue: #56A2DD;
+  --blue-w: #16232D; --blue-e: #294050;
+  --ivy: #55B27F;
+  --on-acc: #0C0F12; --blend: screen;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+.wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Brand bar ────────────────────────────────────────────── */
+.top { background: var(--card); border-bottom: 1px solid var(--hair); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; padding-top: 9px; padding-bottom: 9px; }
+.brand { display: flex; align-items: center; gap: 11px; min-width: 0; text-decoration: none; color: inherit; }
+.crest {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: #FFFFFF;
+  display: grid; place-items: center; flex: none;
+  font-size: 12px; font-weight: 700; letter-spacing: .02em;
+}
+.bn { display: block; font-size: 15.5px; font-weight: 700; letter-spacing: -.02em; color: var(--navy); line-height: 1.2; }
+.bt { display: block; font-size: 12.5px; color: var(--ink-3); line-height: 1.3; margin-top: 1px; }
+.whose { font-size: 14px; color: var(--ink-2); white-space: nowrap; }
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--hair); }
+.hero .wrap { padding: 34px 24px 30px; position: relative; z-index: 2; }
+.blob { position: absolute; border-radius: 50%; mix-blend-mode: var(--blend); pointer-events: none; }
+.blob.b1 { width: 300px; height: 300px; background: var(--navy); right: -80px; top: -125px; opacity: .26; }
+.blob.b2 { width: 230px; height: 230px; background: var(--blue); right: 115px; top: -70px;  opacity: .30; }
+.blob.b3 { width: 170px; height: 170px; background: var(--ivy);  right: -30px; top: 40px;   opacity: .34; }
+.hero h1 { font-size: clamp(30px,5vw,42px); font-weight: 700; letter-spacing: -.035em; line-height: 1.02; margin: 0; color: var(--navy2); }
+.hero .who { font-size: 15px; color: var(--ink-2); margin: 8px 0 0; }
+.gauge { margin-top: 26px; max-width: 440px; }
+.gnums { display: flex; align-items: flex-end; gap: 20px; }
+.gn .k { font-size: 13.5px; color: var(--ink-2); }
+.gn .v { font-size: 38px; font-weight: 700; letter-spacing: -.045em; line-height: 1; margin-top: 1px; color: var(--navy); }
+.gn.t .v { color: var(--blue); }
+.gn .arrow { font-size: 22px; color: var(--ink-3); padding-bottom: 5px; }
+.track { height: 8px; border-radius: 4px; background: var(--sunk); margin-top: 15px; position: relative; }
+.track .fill { position: absolute; inset: 0 auto 0 0; width: 62%; background: var(--navy); border-radius: 4px; }
+.track .goal { position: absolute; top: -4px; bottom: -4px; left: 100%; width: 2px; background: var(--blue); }
+.count { margin: 20px 0 0; display: flex; align-items: baseline; gap: 9px; }
+.count b { font-size: 27px; font-weight: 700; letter-spacing: -.04em; line-height: 1; color: var(--navy); }
+.count span { font-size: 15px; color: var(--ink-2); }
+
+/* ── Sections ─────────────────────────────────────────────── */
+section { padding: 30px 0; border-bottom: 1px solid var(--hair); }
+section:last-of-type { border-bottom: 0; }
+h2 { font-size: 21px; font-weight: 600; letter-spacing: -.026em; margin: 0 0 13px; color: var(--navy2); }
+
+/* ── Crystal's line ───────────────────────────────────────── */
+.note { background: var(--card); border: 1px solid var(--hair); border-left: 3px solid var(--navy); border-radius: 3px; padding: 15px 18px; }
+.note .lead { margin: 0; font-size: 17.5px; line-height: 1.6; color: var(--ink); }
+.note .lead b { font-weight: 600; }
+.more { margin-top: 12px; }
+.more summary { list-style: none; cursor: pointer; font-size: 14.5px; color: var(--blue); display: inline-block; }
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after { content: " ›"; }
+.more[open] summary::after { content: " ‹"; }
+.more summary:hover { text-decoration: underline; }
+.more summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+.more p { margin: 12px 0 0; font-size: 16px; color: var(--ink-2); line-height: 1.6; }
+.sig { margin-top: 12px; font-size: 14px; color: var(--ink-3); }
+
+/* ── This week ────────────────────────────────────────────── */
+.week { background: var(--card); border: 1px solid var(--hair); border-radius: 3px; overflow: hidden; }
+.wtop { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 14px 20px 12px; flex-wrap: wrap; }
+.wtop h2 { margin: 0; }
+.wtop .when { font-size: 14px; color: var(--ink-3); }
+.wbar { height: 3px; background: var(--sunk); }
+.wbar i { display: block; height: 100%; background: var(--ivy); width: 33%; transition: width .18s ease; }
+.task { display: grid; grid-template-columns: auto 1fr auto; gap: 15px; align-items: center; padding: 14px 20px; border-top: 1px solid var(--hair); cursor: pointer; }
+.task:hover { background: var(--sunk); }
+.task input { position: absolute; opacity: 0; width: 0; height: 0; }
+.task .box { width: 20px; height: 20px; border: 1.5px solid var(--hair-2); border-radius: 3px; background: var(--card); display: grid; place-items: center; flex: none; }
+.task .box::after {
+  content: ""; width: 10px; height: 5px; margin-top: -3px;
+  border-left: 2px solid var(--on-acc); border-bottom: 2px solid var(--on-acc);
+  transform: rotate(-45deg) scale(0); transition: transform .12s ease;
+}
+.task input:checked + .box { background: var(--ivy); border-color: var(--ivy); }
+.task input:checked + .box::after { transform: rotate(-45deg) scale(1); }
+.task input:focus-visible + .box { outline: 2px solid var(--blue); outline-offset: 2px; }
+.task .t { font-size: 17px; font-weight: 500; letter-spacing: -.016em; display: block; }
+.task .m { font-size: 14.5px; color: var(--ink-2); margin-top: 2px; display: block; }
+.task.is-done .t { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--hair-2); }
+.task.is-done .m { color: var(--ink-3); }
+.go { font-size: 14.5px; color: var(--blue); text-decoration: none; white-space: nowrap; border-bottom: 1px solid var(--hair-2); }
+.go:hover { border-color: var(--blue); }
+.go:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+.task.is-done .go { color: var(--ink-3); }
+.wfoot { padding: 11px 20px; border-top: 1px solid var(--hair); background: var(--blue-w); font-size: 14px; color: var(--ink-2); }
+.wfoot b { color: var(--ink); font-weight: 600; }
+
+/* ── Four topics ──────────────────────────────────────────── */
+.topics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tp { background: var(--card); border: 1px solid var(--hair); border-radius: 3px; padding: 15px 17px; }
+.tph { display: flex; align-items: center; gap: 10px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--hair-2); flex: none; }
+.dot.now { background: var(--blue); }
+.dot.strong { background: var(--ivy); }
+.tp h3 { font-size: 17px; font-weight: 600; letter-spacing: -.022em; margin: 0; color: var(--navy2); }
+.tp .state { font-size: 13.5px; color: var(--ink-3); margin: 4px 0 0 20px; }
+.tp .state.now { color: var(--blue); font-weight: 500; }
+.tp .state.strong { color: var(--ivy); font-weight: 500; }
+.tp p.d { font-size: 15.5px; color: var(--ink-2); margin: 9px 0 0; }
+
+/* ── Tabs ─────────────────────────────────────────────────── */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--hair); overflow-x: auto; }
+.tabs button {
+  font: inherit; font-size: 15.5px; font-weight: 500; letter-spacing: -.014em;
+  background: none; border: 0; border-bottom: 2px solid transparent;
+  color: var(--ink-2); padding: 9px 12px; cursor: pointer; white-space: nowrap;
+  display: flex; align-items: baseline; gap: 7px; margin-bottom: -1px;
+}
+.tabs button:hover { color: var(--ink); }
+.tabs button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; border-radius: 2px; }
+.tabs button[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--navy); font-weight: 600; }
+.tabs .c { font-size: 12.5px; color: var(--ink-3); font-weight: 400; }
+.tabs button[aria-selected="true"] .c { color: var(--blue); }
+
+.panel[hidden] { display: none; }
+.row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  padding: 13px 2px; border-bottom: 1px solid var(--hair); text-decoration: none; color: inherit;
+}
+a.row:hover { background: var(--card); }
+a.row:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.row .n { font-size: 16.5px; font-weight: 500; letter-spacing: -.014em; }
+.row .d { font-size: 14px; color: var(--ink-3); white-space: nowrap; }
+.row .d.score { color: var(--ivy); font-weight: 600; }
+.row.soon .n { color: var(--ink-3); font-weight: 400; }
+.hintrow { padding: 12px 2px; font-size: 14.5px; color: var(--ink-3); }
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer { background: var(--navy); color: #FFFFFF; }
+footer .wrap { padding: 26px 24px 34px; display: grid; gap: 14px; }
+footer p { margin: 0; font-size: 14.5px; color: rgba(255,255,255,.82); max-width: 62ch; }
+footer p strong { color: #FFFFFF; font-weight: 600; }
+footer .fbrand { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+footer .fbrand b { font-size: 16px; font-weight: 700; letter-spacing: -.02em; color: #FFFFFF; }
+footer .fbrand span { font-size: 13.5px; color: rgba(255,255,255,.7); }
+footer a { color: #FFFFFF; }
+footer .proto { font-size: 12.5px; color: rgba(255,255,255,.55); border-top: 1px solid rgba(255,255,255,.18); padding-top: 13px; }
+
+@media (max-width: 640px) {
+  .whose { display: none; }
+  .topics { grid-template-columns: 1fr; }
+  .task { grid-template-columns: auto 1fr; row-gap: 6px; padding: 13px 16px; }
+  .task .go { grid-column: 2; justify-self: start; }
+  .wtop, .wfoot { padding-left: 16px; padding-right: 16px; }
+  .note .lead { font-size: 16.5px; }
+  .gn .v { font-size: 32px; }
+  .blob.b2 { right: 40px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="https://blueivycoaching.com/" target="_blank" rel="noopener">
+      <span class="crest">BI</span>
+      <span>
+        <span class="bn">Blue Ivy Coaching</span>
+        <span class="bt">Admissions advising &amp; test prep</span>
+      </span>
+    </a>
+    <span class="whose">Student page</span>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="wrap">
+    <h1>Sebastián Solano&nbsp;Corona</h1>
+    <p class="who">SAT Math with Crystal</p>
+    <div class="gauge">
+      <div class="gnums">
+        <div class="gn"><div class="k">Now</div><div class="v">480</div></div>
+        <div class="gn"><div class="arrow">→</div></div>
+        <div class="gn t"><div class="k">Goal</div><div class="v">650</div></div>
+      </div>
+      <div class="track"><i class="fill"></i><span class="goal"></span></div>
+    </div>
+    <p class="count"><b>35</b><span>days until October 3</span></p>
+  </div>
+</div>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <h2>From Crystal</h2>
+    <div class="note">
+      <p class="lead">
+        Geometry's already strong, so we're leaving it. Nearly all your lost points are in
+        <b>algebra</b> — and that's the most teachable thing on the whole test.
+      </p>
+
+      <details class="more">
+        <summary>Why, in a bit more detail</summary>
+        <p>
+          More than half your mistakes came in the first module, on questions rated easy or
+          medium. That isn't a maths problem, it's a pace-and-care problem — which is the
+          quickest kind to fix. Get that first module above 80% and the test opens up the
+          harder second half, and that's what raises your score.
+        </p>
+        <p>
+          Advanced Math builds on the same skills as algebra, so it gets easier on its own
+          once algebra lands. We'll come back to Problem Solving nearer the test.
+        </p>
+      </details>
+
+      <p class="sig">Crystal · 26 August</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="week">
+      <div class="wtop">
+        <h2>This week</h2>
+        <span class="when">Set 26 August</span>
+      </div>
+      <div class="wbar"><i id="wfill"></i></div>
+
+      <label class="task">
+        <input type="checkbox" data-t="0">
+        <span class="box"></span>
+        <span>
+          <span class="t">Linear equations</span>
+          <span class="m">Watch the board from our session, then 12 questions. About 25 minutes.</span>
+        </span>
+        <a class="go" href="../../WhiteboardDefault.png">Open board</a>
+      </label>
+
+      <label class="task">
+        <input type="checkbox" data-t="1">
+        <span class="box"></span>
+        <span>
+          <span class="t">One timed set</span>
+          <span class="m">22 questions in 20 minutes. Aim for 80%.</span>
+        </span>
+        <a class="go" href="https://testinnovators.com/" target="_blank" rel="noopener">Go there ↗</a>
+      </label>
+
+      <label class="task">
+        <input type="checkbox" data-t="2" checked>
+        <span class="box"></span>
+        <span>
+          <span class="t">Read your report</span>
+          <span class="m">Ten minutes. It's short.</span>
+        </span>
+        <a class="go" href="../../studentfeedback/SebastianSolanoCorona/dsat1.html">Open</a>
+      </label>
+
+      <div class="wfoot"><b id="cnt">1 of 3 done</b><span id="left"> · about 45 minutes left</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Your four topics</h2>
+    <div class="topics">
+      <div class="tp">
+        <div class="tph"><span class="dot now"></span><h3>Algebra</h3></div>
+        <p class="state now">Working on this now</p>
+        <p class="d">Most of your lost points are here, so it's where we start.</p>
+      </div>
+      <div class="tp">
+        <div class="tph"><span class="dot"></span><h3>Advanced Math</h3></div>
+        <p class="state">Next after algebra</p>
+        <p class="d">Builds on the same skills, so it gets easier once algebra lands.</p>
+      </div>
+      <div class="tp">
+        <div class="tph"><span class="dot"></span><h3>Problem Solving &amp; Data</h3></div>
+        <p class="state">Later on</p>
+        <p class="d">A few slips, nothing worrying. Back to it nearer the test.</p>
+      </div>
+      <div class="tp">
+        <div class="tph"><span class="dot strong"></span><h3>Geometry &amp; Trigonometry</h3></div>
+        <p class="state strong">Already strong</p>
+        <p class="d">Your best area. We'll keep it warm rather than teach it again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Your stuff</h2>
+
+    <div class="tabs" role="tablist" aria-label="Your materials">
+      <button role="tab" id="t-boards" aria-controls="p-boards" aria-selected="true">Boards <span class="c">1</span></button>
+      <button role="tab" id="t-reports" aria-controls="p-reports" aria-selected="false" tabindex="-1">Reports <span class="c">1</span></button>
+      <button role="tab" id="t-reference" aria-controls="p-reference" aria-selected="false" tabindex="-1">Reference <span class="c">2</span></button>
+      <button role="tab" id="t-practice" aria-controls="p-practice" aria-selected="false" tabindex="-1">Practice <span class="c">2</span></button>
+    </div>
+
+    <div class="panel" id="p-boards" role="tabpanel" aria-labelledby="t-boards" tabindex="0">
+      <a class="row" href="../../WhiteboardDefault.png"><span class="n">Linear equations</span><span class="d">Algebra · 26 August</span></a>
+      <p class="hintrow">A new board goes up here after every session.</p>
+    </div>
+
+    <div class="panel" id="p-reports" role="tabpanel" aria-labelledby="t-reports" tabindex="0" hidden>
+      <a class="row" href="../../studentfeedback/SebastianSolanoCorona/dsat1.html"><span class="n">Diagnostic report</span><span class="d score">480 · 26 August</span></a>
+      <div class="row soon"><span class="n">Mock 1</span><span class="d">Around 6 September</span></div>
+      <div class="row soon"><span class="n">Mock 2</span><span class="d">Around 20 September</span></div>
+    </div>
+
+    <div class="panel" id="p-reference" role="tabpanel" aria-labelledby="t-reference" tabindex="0" hidden>
+      <a class="row" href="../../EssentialFormulas.html"><span class="n">Essential equations</span><span class="d">Formulas to memorise</span></a>
+      <a class="row" href="../../References.png"><span class="n">Reference sheets</span><span class="d">Given to you on test day</span></a>
+    </div>
+
+    <div class="panel" id="p-practice" role="tabpanel" aria-labelledby="t-practice" tabindex="0" hidden>
+      <a class="row" href="https://testinnovators.com/" target="_blank" rel="noopener"><span class="n">Test Innovators</span><span class="d">Drills and timed sets ↗</span></a>
+      <a class="row" href="../../TestInnovatorsSuccessGuide.jpg"><span class="n">Success guide</span><span class="d">How to use the practice site</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">
+      <b>Blue Ivy Coaching</b>
+      <span>Global leaders in admissions advising</span>
+    </div>
+    <p><strong>For parents:</strong> the diagnostic report explains the 480, the 650 goal, and the plan to close the gap. Questions about the programme — <a href="https://blueivycoaching.com/" target="_blank" rel="noopener">blueivycoaching.com</a>.</p>
+    </div>
+</footer>
+
+<script>
+(function () {
+  /* ── This week ──────────────────────────────────────────── */
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.task input'));
+  var mins = [25, 20, 10];
+  var cnt = document.getElementById('cnt');
+  var left = document.getElementById('left');
+  var fill = document.getElementById('wfill');
+  var key = 'page:sebastian:2026-08-26';
+  var store = {};
+
+  try { store = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) { store = {}; }
+
+  function paint() {
+    var done = 0, mleft = 0;
+    boxes.forEach(function (b, i) {
+      if (b.checked) done++; else mleft += mins[i];
+      b.closest('.task').classList.toggle('is-done', b.checked);
+    });
+    fill.style.width = Math.round(done / boxes.length * 100) + '%';
+    cnt.textContent = done + ' of ' + boxes.length + ' done';
+    left.textContent = mleft ? ' · about ' + mleft + ' minutes left' : ' · all done, nice work';
+  }
+
+  boxes.forEach(function (b) {
+    var k = b.dataset.t;
+    if (Object.prototype.hasOwnProperty.call(store, k)) b.checked = !!store[k];
+    b.addEventListener('change', function () {
+      store[k] = b.checked;
+      try { localStorage.setItem(key, JSON.stringify(store)); } catch (e) { /* private mode */ }
+      paint();
+    });
+  });
+  paint();
+
+  /* ── Tabs ───────────────────────────────────────────────── */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { select(tab); });
+    tab.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (d) {
+        e.preventDefault();
+        select(tabs[(i + d + tabs.length) % tabs.length], true);
+      } else if (e.key === 'Home') {
+        e.preventDefault(); select(tabs[0], true);
+      } else if (e.key === 'End') {
+        e.preventDefault(); select(tabs[tabs.length - 1], true);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
