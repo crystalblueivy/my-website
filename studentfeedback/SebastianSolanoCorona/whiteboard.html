@@ -8,23 +8,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevents outer page scrollbars */
+        }
+
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f8fafc;
             color: #1e293b;
-            margin: 0;
-            padding: 40px 20px;
+            padding: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             width: 100%;
+            height: 100%;
             background: #ffffff;
-            padding: 40px;
+            padding: 24px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
         }
 
         /* Navigation Bar & Dropdowns */
@@ -32,19 +46,22 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 16px;
+            flex-shrink: 0;
         }
 
         .dropdown {
             position: relative;
+            width: 100%;
         }
 
         .dropbtn {
             width: 100%;
+            height: 60px;
             background-color: #0066c0;
             color: white;
-            padding: 14px 10px;
-            font-size: 0.95rem;
+            padding: 8px 10px;
+            font-size: 0.85rem;
             font-weight: 600;
             font-family: inherit;
             border: none;
@@ -53,6 +70,10 @@
             transition: background-color 0.2s ease;
             box-shadow: 0 2px 8px rgba(0, 102, 192, 0.2);
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
         }
 
         .dropbtn:hover {
@@ -77,10 +98,10 @@
         /* Active Subtopic Link */
         .dropdown-content a.active-link {
             color: #2563eb;
-            padding: 12px 16px;
+            padding: 10px 14px;
             text-decoration: none;
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             border-bottom: 1px solid #f1f5f9;
             cursor: pointer;
@@ -97,10 +118,10 @@
         /* Disabled Subtopic Links */
         .dropdown-content a.disabled-link {
             color: #94a3b8;
-            padding: 12px 16px;
+            padding: 10px 14px;
             text-decoration: none;
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             border-bottom: 1px solid #f1f5f9;
             cursor: not-allowed;
@@ -119,82 +140,19 @@
         /* Content Display Window */
         .viewer-container {
             width: 100%;
-            height: 500px;
+            flex: 1;
             border: 2px solid #e2e8f0;
             border-radius: 12px;
             overflow: hidden;
             background-color: #f8fafc;
-            margin-bottom: 35px;
+            min-height: 0;
         }
 
         .viewer-frame {
             width: 100%;
             height: 100%;
             border: none;
-        }
-
-        /* Mocks Section */
-        .category-header {
-            background-color: #0066c0;
-            color: white;
-            text-align: center;
-            padding: 14px 24px;
-            border-radius: 50px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 102, 192, 0.2);
-        }
-
-        ul.topic-list {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        .mock-row {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .mock-row a.main-btn {
-            flex: 1;
-            padding: 12px 18px;
-            background-color: #f1f5f9;
-            color: #2563eb;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid #e2e8f0;
-        }
-
-        .mock-row a.main-btn:hover {
-            background-color: #e2e8f0;
-            color: #1d4ed8;
-            border-color: #cbd5e1;
-        }
-
-        .mock-row a.stats-btn {
-            padding: 12px 20px;
-            background-color: #0066c0;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            border: 1px solid #0066c0;
-            white-space: nowrap;
-        }
-
-        .mock-row a.stats-btn:hover {
-            background-color: #004c90;
-            border-color: #004c90;
-            transform: translateY(-1px);
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -254,14 +212,18 @@
         </div>
 
         <div class="viewer-container">
-            <iframe id="contentViewer" class="viewer-frame" src="about:blank" title="Topic Content"></iframe>
+            <iframe id="contentViewer" class="viewer-frame" srcdoc="<!DOCTYPE html><html><head><style>html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;display:flex;justify-content:center;align-items:center;}img{max-width:100%;max-height:100%;object-fit:contain;}</style></head><body><img src='https://crystalblueivy.github.io/my-website/WhiteboardDefault.png'></body></html>" title="Topic Content"></iframe>
         </div>
+
+    </div>
 
     <script>
         function loadContent(event, url) {
             event.preventDefault();
             if (url && url !== '#') {
-                document.getElementById('contentViewer').src = url;
+                const iframe = document.getElementById('contentViewer');
+                iframe.removeAttribute('srcdoc'); // Removes image override if switching to an external page
+                iframe.src = url;
             }
         }
     </script>
