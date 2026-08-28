@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             background: #ffffff;
             padding: 40px;
@@ -27,23 +27,113 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .header-image {
+        /* Navigation Bar & Dropdowns */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropbtn {
             width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
+            background-color: #0066c0;
+            color: white;
+            padding: 14px 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: inherit;
+            border: none;
             border-radius: 8px;
-        }
-
-        .student-name {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 102, 192, 0.2);
             text-align: center;
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #0b3b60;
-            margin-bottom: 30px;
         }
 
+        .dropbtn:hover {
+            background-color: #004c90;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 240px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            z-index: 10;
+            top: 100%;
+            left: 0;
+            margin-top: 5px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Active Subtopic Link */
+        .dropdown-content a.active-link {
+            color: #2563eb;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+            cursor: pointer;
+            pointer-events: auto;
+            background-color: #ffffff;
+            transition: background 0.2s ease;
+        }
+
+        .dropdown-content a.active-link:hover {
+            background-color: #f1f5f9;
+            color: #1d4ed8;
+        }
+
+        /* Disabled Subtopic Links */
+        .dropdown-content a.disabled-link {
+            color: #94a3b8;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+            cursor: not-allowed;
+            pointer-events: none;
+            background-color: #f8fafc;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Content Display Window */
+        .viewer-container {
+            width: 100%;
+            height: 500px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #f8fafc;
+            margin-bottom: 35px;
+        }
+
+        .viewer-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Mocks Section */
         .category-header {
             background-color: #0066c0;
             color: white;
@@ -52,28 +142,25 @@
             border-radius: 50px;
             font-size: 1.4rem;
             font-weight: 600;
-            margin-top: 35px;
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0, 102, 192, 0.2);
-        }
-
-        .category-header:first-of-type {
-            margin-top: 0;
         }
 
         ul.topic-list {
             list-style-type: none;
             padding-left: 0;
-            margin: 0 0 25px 0;
+            margin: 0;
         }
 
-        ul.topic-list li {
+        .mock-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
             margin-bottom: 10px;
         }
 
-        /* Active Link Styles */
-        a.full-link, a.main-btn, a.stats-btn {
-            display: block;
+        .mock-row a.main-btn {
+            flex: 1;
             padding: 12px 18px;
             background-color: #f1f5f9;
             color: #2563eb;
@@ -85,66 +172,34 @@
             border: 1px solid #e2e8f0;
         }
 
-        a.full-link:hover, a.main-btn:hover {
+        .mock-row a.main-btn:hover {
             background-color: #e2e8f0;
             color: #1d4ed8;
-            transform: translateX(4px);
             border-color: #cbd5e1;
         }
 
-        /* Disabled Button Styles */
-        .disabled-btn {
-            display: block;
-            padding: 12px 18px;
-            background-color: #f8fafc;
-            color: #94a3b8;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            border: 1px solid #e2e8f0;
-            cursor: not-allowed;
-            user-select: none;
-        }
-
-        .mock-row {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .mock-row .main-btn, .mock-row .disabled-btn:not(.stats-btn) {
-            flex: 1;
-        }
-
-        a.stats-btn {
+        .mock-row a.stats-btn {
             padding: 12px 20px;
             background-color: #0066c0;
             color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
             font-size: 0.95rem;
             font-weight: 600;
+            transition: all 0.2s ease;
             border: 1px solid #0066c0;
             white-space: nowrap;
         }
 
-        a.stats-btn:hover {
+        .mock-row a.stats-btn:hover {
             background-color: #004c90;
             border-color: #004c90;
             transform: translateY(-1px);
         }
 
-        span.stats-btn.disabled-btn {
-            padding: 12px 20px;
-            background-color: #e2e8f0;
-            color: #94a3b8;
-            border: 1px solid #cbd5e1;
-            font-size: 0.95rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
         @media (max-width: 768px) {
-            .student-name {
-                font-size: 1.6rem;
+            .nav-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -153,70 +208,89 @@
 
     <div class="container">
 
-        <img src="https://crystalblueivy.github.io/my-website/WhiteboardsHeader.png" alt="Whiteboards Header" class="header-image">
+        <div class="nav-grid">
+            <div class="dropdown">
+                <button class="dropbtn">Algebra</button>
+                <div class="dropdown-content">
+                    <a href="#" class="active-link" onclick="loadContent(event, 'https://limnu.com/d/invited.html?b=B_YyPAf5PyTny2bo&')">Linear equations in 1 variable</a>
+                    <a href="#" class="disabled-link">Linear functions</a>
+                    <a href="#" class="disabled-link">Linear equations in two variables</a>
+                    <a href="#" class="disabled-link">Systems of two linear equations in two variables</a>
+                    <a href="#" class="disabled-link">Linear inequalities in one or two variables</a>
+                </div>
+            </div>
 
-        <h1 class="student-name">Sebastián Solano Corona</h1>
+            <div class="dropdown">
+                <button class="dropbtn">Advanced Math</button>
+                <div class="dropdown-content">
+                    <a href="#" class="disabled-link">Equivalent expressions</a>
+                    <a href="#" class="disabled-link">Nonlinear functions</a>
+                    <a href="#" class="disabled-link">Nonlinear equations in one variable and systems of equations...</a>
+                </div>
+            </div>
 
-        <div class="category-header">Algebra</div>
-        <ul class="topic-list">
-            <li><a href="https://limnu.com/d/invited.html?b=B_YyPAf5PyTny2bo&amp;" class="full-link" target="_blank">Linear equations in 1 variable</a></li>
-            <li><span class="disabled-btn">Linear functions</span></li>
-            <li><span class="disabled-btn">Linear equations in two variables</span></li>
-            <li><span class="disabled-btn">Systems of two linear equations in two variables</span></li>
-            <li><span class="disabled-btn">Linear inequalities in one or two variables</span></li>
-        </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Geometry & Trig</button>
+                <div class="dropdown-content">
+                    <a href="#" class="disabled-link">Lines, angles, and triangles</a>
+                    <a href="#" class="disabled-link">Right triangles and trigonometry</a>
+                    <a href="#" class="disabled-link">Circles</a>
+                    <a href="#" class="disabled-link">Area and volume</a>
+                </div>
+            </div>
 
-        <div class="category-header">Advanced Math</div>
-        <ul class="topic-list">
-            <li><span class="disabled-btn">Equivalent expressions</span></li>
-            <li><span class="disabled-btn">Nonlinear functions</span></li>
-            <li><span class="disabled-btn">Nonlinear equations in one variable and systems of equations in two variables</span></li>
-        </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Data Analysis</button>
+                <div class="dropdown-content">
+                    <a href="#" class="disabled-link">Ratios, rates, proportional relationships, and units</a>
+                    <a href="#" class="disabled-link">Percentages</a>
+                    <a href="#" class="disabled-link">One variable data: Distributions and measures of center...</a>
+                    <a href="#" class="disabled-link">Two-variable data: models and scatter plots</a>
+                    <a href="#" class="disabled-link">Probability and conditional probability</a>
+                    <a href="#" class="disabled-link">Inference from sample statistics and margin of error</a>
+                    <a href="#" class="disabled-link">Evaluating statistical claims</a>
+                </div>
+            </div>
+        </div>
 
-        <div class="category-header">Geometry and Trigonometry</div>
-        <ul class="topic-list">
-            <li><span class="disabled-btn">Lines, angles, and triangles</span></li>
-            <li><span class="disabled-btn">Right triangles and trigonometry</span></li>
-            <li><span class="disabled-btn">Circles</span></li>
-            <li><span class="disabled-btn">Area and volume</span></li>
-        </ul>
-
-        <div class="category-header">Problem-Solving and Data Analysis</div>
-        <ul class="topic-list">
-            <li><span class="disabled-btn">Ratios, rates, proportional relationships, and units</span></li>
-            <li><span class="disabled-btn">Percentages</span></li>
-            <li><span class="disabled-btn">One variable data: Distributions and measures of center and spread</span></li>
-            <li><span class="disabled-btn">Two-variable data: models and scatter plots</span></li>
-            <li><span class="disabled-btn">Probability and conditional probability</span></li>
-            <li><span class="disabled-btn">Inference from sample statistics and margin of error</span></li>
-            <li><span class="disabled-btn">Evaluating statistical claims</span></li>
-        </ul>
+        <div class="viewer-container">
+            <iframe id="contentViewer" class="viewer-frame" src="about:blank" title="Topic Content"></iframe>
+        </div>
 
         <div class="category-header">Mocks</div>
         <ul class="topic-list">
             <li class="mock-row">
-                <span class="disabled-btn">DSAT #1</span>
-                <a href="https://crystalblueivy.github.io/my-website/studentfeedback/SebastianSolanoCorona/dsat1.html" class="stats-btn" target="_blank">Stats</a>
+                <a href="#" class="main-btn" target="_blank">DSAT #1</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
             </li>
             <li class="mock-row">
-                <span class="disabled-btn">DSAT #2</span>
-                <span class="stats-btn disabled-btn">Stats</span>
+                <a href="#" class="main-btn" target="_blank">DSAT #2</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
             </li>
             <li class="mock-row">
-                <span class="disabled-btn">DSAT #3</span>
-                <span class="stats-btn disabled-btn">Stats</span>
+                <a href="#" class="main-btn" target="_blank">DSAT #3</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
             </li>
             <li class="mock-row">
-                <span class="disabled-btn">Bluebook #1</span>
-                <span class="stats-btn disabled-btn">Stats</span>
+                <a href="#" class="main-btn" target="_blank">Bluebook #1</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
             </li>
             <li class="mock-row">
-                <span class="disabled-btn">Bluebook #2</span>
-                <span class="stats-btn disabled-btn">Stats</span>
+                <a href="#" class="main-btn" target="_blank">Bluebook #2</a>
+                <a href="#" class="stats-btn" target="_blank">Stats</a>
             </li>
         </ul>
 
     </div>
+
+    <script>
+        function loadContent(event, url) {
+            event.preventDefault();
+            if (url && url !== '#') {
+                document.getElementById('contentViewer').src = url;
+            }
+        }
+    </script>
 
 </body>
 </html>
