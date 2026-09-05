@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Math Progress Report - Sebastián Solano Corona</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <style>
+        :root {
+            --primary-navy: #1B365D;
+            --secondary-blue: #4A90E2;
+            --accent-orange: #F5A623;
+            --light-bg: #F4F6F9;
+            --text-dark: #2C3E50;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Lock base document scaling */
+        html {
+            box-sizing: border-box;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #EBF0F5;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .report-container {
+            width: 100%;
+            max-width: 950px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        /* Header Styling */
+        .header {
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .header-logo-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 45px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .student-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 10px;
+        }
+
+        .student-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin: 0;
+        }
+
+        .report-date {
+            font-size: 14px;
+            color: #7F8C8D;
+            font-weight: 500;
+        }
+
+        /* Summary Card */
+        .summary-card {
+            background-color: var(--light-bg);
+            border-left: 5px solid var(--primary-navy);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card p {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .summary-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .summary-card li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .summary-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Fixed Grid Layout prevents shifting on zoom */
+        .dashboard-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            border: 1px solid #E1E8ED;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(50% - 13.5px);
+            min-width: 320px;
+            box-sizing: border-box;
+        }
+
+        .card-full {
+            width: 100%;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-top: 0;
+            margin-bottom: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Rigid chart canvas wrapper prevents element recalculation shifting */
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            max-height: 220px;
+            overflow: hidden;
+        }
+
+        .roadmap-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        /* Table Styling */
+        .diagnosis-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .diagnosis-table th {
+            background-color: var(--primary-navy);
+            color: #FFFFFF;
+            text-align: left;
+            padding: 10px 14px;
+            font-weight: 600;
+        }
+
+        .diagnosis-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #E1E8ED;
+            color: var(--text-dark);
+        }
+
+        .diagnosis-table tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="report-container">
+    <!-- Header -->
+    <div class="header">
+        <img src="https://github.com/crystalblueivy/my-website/blob/main/DiagnosticReportHeader.png?raw=true" alt="BLUE IVY | COACHING | PROGRESS REPORT" class="header-logo-img">
+
+        <div class="student-info">
+            <h1 class="student-name">Sebastián Solano Corona</h1>
+            <span class="report-date">AUGUST 26TH, 2026</span>
+        </div>
+    </div>
+
+    <!-- Executive Summary for Parents -->
+    <div class="summary-card">
+        <p><strong>Sebastián demonstrated encouraging problem-solving potential on his Digital SAT Math diagnostic!</strong> He scored a 480 on the Math section, showing fantastic mastery in Geometry & Trigonometry. Moving forward, our key coaching strategies to rapidly scale his score ceiling toward his goal of 650 points include:</p>
+        <ul>
+            <li><strong>Build Module 1 Precision & Unlock Advanced Module 2:</strong> 57% of Sebastián's total errors occurred in Module 1, with over 60% of those missed questions categorized as easy or medium difficulty. Boosting Module 1 accuracy past 80% is our top priority to route him into the Hard Module 2 and immediately lift his score cap.</li>
+            <li><strong>Master Core High-Yield Math Domains:</strong> Algebra and Advanced Math accounted for 69% of all missed questions on this exam. Intensive practice with linear equations and quadratic functions will build vital speed and confidence.</li>
+            <li><strong>Strategic Tool Utilization & Careless Error Prevention:</strong> We will train Sebastián to systematically apply the Desmos graphing calculator to bypass tedious algebra steps and avoid simple arithmetic or reading slips.</li>
+        </ul>
+    </div>
+
+    <!-- Charts Dashboard -->
+    <div class="dashboard-grid">
+        
+        <!-- Chart 1: Target Score vs Current Score -->
+        <div class="card">
+            <h2 class="card-title">Current vs. Target Math Score</h2>
+            <div class="chart-wrapper">
+                <canvas id="scoreProgressionChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Chart 2: Accuracy by Module -->
+        <div class="card">
+            <h2 class="card-title">Accuracy by Module (%)</h2>
+            <div class="chart-wrapper">
+                <canvas id="moduleAccuracyChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Chart 3: Domain Error Distribution -->
+        <div class="card">
+            <h2 class="card-title">Domain Error Distribution (%)</h2>
+            <div class="chart-wrapper">
+                <canvas id="domainErrorChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Card 4: Roadmap -->
+        <div class="card">
+            <h2 class="card-title">Roadmap</h2>
+            <img src="https://crystalblueivy.github.io/my-website/reports/diagnostic/SebastianSolanoCoronoRM.png" alt="Roadmap" class="roadmap-img">
+        </div>
+
+        <!-- Table: Diagnosis of Errors -->
+        <div class="card card-full">
+            <h2 class="card-title">Diagnosis of Errors</h2>
+            <table class="diagnosis-table">
+                <thead>
+                    <tr>
+                        <th>Domain / Error Category</th>
+                        <th>Missed Questions</th>
+                        <th>Share of Total Errors (%)</th>
+                        <th>Primary Action Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Algebra</strong></td>
+                        <td>6</td>
+                        <td>38%</td>
+                        <td>Reinforce single/two-variable linear equations and systems of equations drills.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advanced Math</strong></td>
+                        <td>5</td>
+                        <td>31%</td>
+                        <td>Target non-linear functions, quadratic equations, and expression simplification strategies.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Problem-Solving & Data Analysis</strong></td>
+                        <td>3</td>
+                        <td>19%</td>
+                        <td>Review percentage growth/decay formulas, ratios, and single-variable data distributions.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Geometry & Trigonometry</strong></td>
+                        <td>2</td>
+                        <td>12%</td>
+                        <td>Maintain current strength; review circle equations and surface area/volume formulas.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    Chart.register(ChartDataLabels);
+
+    Chart.defaults.font.family = "'Segoe UI', 'Helvetica', 'Arial', sans-serif";
+    Chart.defaults.color = '#2C3E50';
+
+    // 1. Current vs Target Math Score Chart (Updated to 650 Goal)
+    const ctxScore = document.getElementById('scoreProgressionChart').getContext('2d');
+    new Chart(ctxScore, {
+        type: 'bar',
+        data: {
+            labels: ['Current Score', 'Target Score'],
+            datasets: [{
+                label: 'Math Score',
+                data: [480, 650],
+                backgroundColor: ['#4A90E2', '#1B365D'],
+                borderRadius: 6,
+                barThickness: 50
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { 
+                legend: { display: false },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'top',
+                    color: '#1B365D',
+                    font: { weight: 'bold', size: 12 },
+                    formatter: function(value) {
+                        return value;
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    min: 200,
+                    max: 800,
+                    ticks: { stepSize: 100 },
+                    title: {
+                        display: true,
+                        text: 'Total Math Score',
+                        color: '#1B365D',
+                        font: { weight: 'bold', size: 12 }
+                    }
+                },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+    // 2. Accuracy by Module Chart (Module 1: 14/22 = 64%, Module 2 Easy: 15/22 = 68%)
+    const ctxModule = document.getElementById('moduleAccuracyChart').getContext('2d');
+    new Chart(ctxModule, {
+        type: 'bar',
+        data: {
+            labels: ['DSAT 1'],
+            datasets: [
+                {
+                    label: 'Module 1',
+                    data: [64],
+                    backgroundColor: '#4A90E2',
+                    borderRadius: 4
+                },
+                {
+                    label: 'Module 2 (Easy)',
+                    data: [68],
+                    backgroundColor: '#F5A623',
+                    borderRadius: 4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { 
+                legend: { 
+                    position: 'bottom',
+                    labels: { boxWidth: 12, font: { size: 11 } }
+                },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'top',
+                    color: '#1B365D',
+                    font: { weight: 'bold', size: 11 },
+                    formatter: function(value) {
+                        return value + '%';
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    min: 0,
+                    max: 100,
+                    ticks: { callback: value => value + '%' },
+                    title: {
+                        display: true,
+                        text: 'Percent Correct (%)',
+                        color: '#1B365D',
+                        font: { weight: 'bold', size: 12 }
+                    }
+                },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+    // 3. Domain Error Distribution Chart (Algebra: 6, Advanced Math: 5, Data: 3, Geo: 2 -> 38%, 31%, 19%, 12%)
+    const ctxDomain = document.getElementById('domainErrorChart').getContext('2d');
+    new Chart(ctxDomain, {
+        type: 'doughnut',
+        data: {
+            labels: ['Algebra', 'Advanced Math', 'Problem-Solving & Data Analysis', 'Geometry & Trigonometry'],
+            datasets: [{
+                data: [38, 31, 19, 12],
+                backgroundColor: [
+                    '#F5A623',
+                    '#41B883',
+                    '#E15B64',
+                    '#8E9AAF'
+                ],
+                borderWidth: 2,
+                borderColor: '#FFFFFF'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'right',
+                    labels: { boxWidth: 12, font: { size: 10 } }
+                },
+                datalabels: { display: false }
+            },
+            cutout: '60%'
+        }
+    });
+</script>
+
+</body>
+</html>
