@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Math Practice Module</title>
+    <!-- MathJax Library for standard mathematical rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary: #002e6d;
+            --primary-hover: #001d45;
+            --bg: #f4f6f9;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --border: #d1d5db;
+            --correct: #16a34a;
+            --incorrect: #dc2626;
+            --selected: #e0e7ff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .timer {
+            font-size: 1.25rem;
+            font-weight: bold;
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .question-card {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #fff;
+        }
+
+        .question-header {
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            color: #4b5563;
+        }
+
+        .question-body {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: capitalize;
+        }
+
+        .tag-easy { background: #dcfce7; color: #15803d; }
+        .tag-medium { background: #fef3c7; color: #b45309; }
+        .tag-hard { background: #fee2e2; color: #b91c1c; }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            text-align: left;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .option-btn:hover {
+            background: #f3f4f6;
+        }
+
+        .option-btn.selected {
+            background: var(--selected);
+            border-color: var(--primary);
+        }
+
+        .text-input {
+            width: 100%;
+            max-width: 220px;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+
+        .controls {
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .results-panel {
+            display: none;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #eef2ff;
+            border-radius: 6px;
+            border: 1px solid #c7d2fe;
+        }
+
+        .result-item {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .result-correct { background: #dcfce7; color: #166534; }
+        .result-incorrect { background: #fee2e2; color: #991b1b; }
+
+        .explanation {
+            font-size: 0.95rem;
+            color: #374151;
+            margin-top: 8px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>SAT Math Practice</h1>
+        <div class="timer" id="timer">20:00</div>
+    </header>
+
+    <div id="results-panel" class="results-panel">
+        <h2>Test Completed</h2>
+        <p id="score-text"></p>
+    </div>
+
+    <form id="quiz-form">
+        <div id="questions-container"></div>
+        <div class="controls">
+            <button type="button" class="submit-btn" id="end-btn" onclick="submitTest()">End Test</button>
+        </div>
+    </form>
+</div>
+
+<script>
+const questions = [
+    // Easy (7)
+    { id: 1, type: 'mc', difficulty: 'easy', text: 'If \\(3x + 7 = 22\\), what is the value of \\(x\\)?', options: ['3', '5', '7', '15'], answer: '5', exp: 'Subtract 7 from both sides: \\(3x = 15\\). Divide by 3: \\(x = 5\\).' },
+    { id: 2, type: 'mc', difficulty: 'easy', text: 'A line has an equation of \\(y = 4x - 3\\). What is the y-intercept of the line?', options: ['(0, 4)', '(0, -3)', '(4, 0)', '(-3, 0)'], answer: '(0, -3)', exp: 'In slope-intercept form \\(y = mx + b\\), the y-intercept is \\(b = -3\\), which corresponds to \\((0, -3)\\).' },
+    { id: 3, type: 'mc', difficulty: 'easy', text: 'Which of the following values is a solution to the inequality \\(2x - 5 > 9\\)?', options: ['5', '6', '7', '8'], answer: '8', exp: '\\(2x > 14 \\implies x > 7\\). Among the options, 8 is the only value greater than 7.' },
+    { id: 4, type: 'mc', difficulty: 'easy', text: 'A car travels at a constant speed of 60 miles per hour. How many miles does it travel in 2.5 hours?', options: ['120', '135', '150', '180'], answer: '150', exp: '\\(\\text{Distance} = 60 \\times 2.5 = 150\\) miles.' },
+    { id: 5, type: 'mc', difficulty: 'easy', text: 'What is 15% of 80?', options: ['8', '10', '12', '15'], answer: '12', exp: '\\(0.15 \\times 80 = 12\\).' },
+    { id: 6, type: 'open', difficulty: 'easy', text: 'If \\(f(x) = x^2 - 4x + 3\\), what is the value of \\(f(5)\\)?', answer: '8', exp: '\\(f(5) = 5^2 - 4(5) + 3 = 25 - 20 + 3 = 8\\).' },
+    { id: 7, type: 'open', difficulty: 'easy', text: 'Solve for \\(x\\): \\(\\frac{x}{4} + 3 = 9\\).', answer: '24', exp: '\\(\\frac{x}{4} = 6 \\implies x = 24\\).' },
+
+    // Medium (8)
+    { id: 8, type: 'mc', difficulty: 'medium', text: 'Which of the following is equivalent to \\((2x + 3)(x - 5)\\)?', options: ['\\(2x^2 - 15\\)', '\\(2x^2 - 7x - 15\\)', '\\(2x^2 + 7x - 15\\)', '\\(2x^2 - 10x - 15\\)'], answer: '\\(2x^2 - 7x - 15\\)', answerRaw: '2x^2 - 7x - 15', exp: 'Expand using FOIL: \\(2x^2 - 10x + 3x - 15 = 2x^2 - 7x - 15\\).' },
+    { id: 9, type: 'mc', difficulty: 'medium', text: 'A right triangle has legs of lengths 6 and 8. What is the length of the hypotenuse?', options: ['10', '12', '14', '100'], answer: '10', exp: '\\(c = \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10\\).' },
+    { id: 10, type: 'mc', difficulty: 'medium', text: 'If the system of equations below has a unique solution \\((x, y)\\), what is \\(x\\)?<br><br>\\(2x + y = 10\\)<br>\\(x - y = 2\\)', options: ['2', '3', '4', '6'], answer: '4', exp: 'Add the two equations: \\(3x = 12 \\implies x = 4\\).' },
+    { id: 11, type: 'mc', difficulty: 'medium', text: 'A rectangle has a length that is 3 times its width. If the perimeter is 48, what is the area of the rectangle?', options: ['36', '108', '144', '432'], answer: '108', exp: '\\(2(L + W) = 48 \\implies L + W = 24\\). Since \\(L = 3W\\), \\(4W = 24 \\implies W = 6, L = 18\\). Area \\(= 6 \\times 18 = 108\\).' },
+    { id: 12, type: 'mc', difficulty: 'medium', text: 'The function \\(g\\) is defined by \\(g(x) = ax + 5\\). If \\(g(3) = 17\\), what is the value of \\(a\\)?', options: ['3', '4', '5', '6'], answer: '4', exp: '\\(17 = 3a + 5 \\implies 12 = 3a \\implies a = 4\\).' },
+    { id: 13, type: 'open', difficulty: 'medium', text: 'If \\(2^{x+1} = 32\\), what is the value of \\(x\\)?', answer: '4', exp: '\\(32 = 2^5 \\implies x + 1 = 5 \\implies x = 4\\).' },
+    { id: 14, type: 'open', difficulty: 'medium', text: 'What is the largest solution to the equation \\(x^2 - 9x + 20 = 0\\)?', answer: '5', exp: '\\((x - 4)(x - 5) = 0 \\implies x = 4\\) or \\(x = 5\\). The largest solution is 5.' },
+    { id: 15, type: 'open', difficulty: 'medium', text: 'The mean of 5 numbers is 12. If one number is removed, the mean becomes 10. What was the removed number?', answer: '20', exp: 'Initial sum \\(= 5 \\times 12 = 60\\). Remaining sum \\(= 4 \\times 10 = 40\\). Removed number \\(= 60 - 40 = 20\\).' },
+
+    // Advanced (7)
+    { id: 16, type: 'mc', difficulty: 'hard', text: 'A circle in the xy-plane has equation \\((x - 3)^2 + (y + 4)^2 = 25\\). Which of the following points lies on the circle?', options: ['(0, 0)', '(3, 2)', '(2, 1)', '(1, -1)'], answer: '(0, 0)', exp: 'Substitute \\((0,0)\\): \\((0-3)^2 + (0+4)^2 = 9 + 16 = 25\\).' },
+    { id: 17, type: 'mc', difficulty: 'hard', text: 'If \\(\\sin(x^\\circ) = \\frac{3}{5}\\) for an acute angle \\(x\\), what is the value of \\(\\cos(90^\\circ - x^\\circ)\\)?', options: ['\\(\\frac{3}{5}\\)', '\\(\\frac{4}{5}\\)', '\\(\\frac{3}{4}\\)', '\\(\\frac{5}{3}\\)'], answer: '\\(\\frac{3}{5}\\)', answerRaw: '3/5', exp: 'By the co-function identity, \\(\\sin(x^\\circ) = \\cos(90^\\circ - x^\\circ) = \\frac{3}{5}\\).' },
+    { id: 18, type: 'mc', difficulty: 'hard', text: 'The quadratic function \\(f\\) is given by \\(f(x) = -2(x - 3)^2 + 18\\). What is the maximum value of \\(f(x)\\)?', options: ['-3', '3', '18', '36'], answer: '18', exp: 'In vertex form \\(a(x-h)^2 + k\\), since \\(a < 0\\), the maximum value is \\(k = 18\\).' },
+    { id: 19, type: 'mc', difficulty: 'hard', text: 'How many real solutions does the system of equations \\(y = x^2 - 4x + 5\\) and \\(y = 2x - 5\\) have?', options: ['0', '1', '2', 'Infinitely many'], answer: '0', exp: 'Set equal: \\(x^2 - 6x + 10 = 0\\). Discriminant \\(b^2 - 4ac = (-6)^2 - 4(1)(10) = -4 < 0\\), so there are 0 real solutions.' },
+    { id: 20, type: 'open', difficulty: 'hard', text: 'If \\((x^a)^b = x^{18}\\) and \\(\\frac{x^{a \\cdot b}}{x^c} = x^{10}\\), what is the value of \\(c\\)?', answer: '8', exp: '\\((x^a)^b = x^{ab} = x^{18} \\implies ab = 18\\). Then \\(\\frac{x^{18}}{x^c} = x^{18-c} = x^{10} \\implies 18 - c = 10 \\implies c = 8\\).' },
+    { id: 21, type: 'open', difficulty: 'hard', text: 'In a right-angled triangle, \\(\\tan(\\theta) = \\frac{4}{3}\\). What is the value of \\(\\sin(\\theta)\\)?', answer: '0.8', exp: 'Opposite = 4, Adjacent = 3 \\(\\implies\\) Hypotenuse \\(= \\sqrt{4^2 + 3^2} = 5\\). \\(\\sin(\\theta) = \\frac{4}{5} = 0.8\\).' },
+    { id: 22, type: 'open', difficulty: 'hard', text: 'The expression \\(\\frac{3x + 2}{x - 1}\\) is equivalent to \\(A + \\frac{B}{x - 1}\\). What is the value of \\(A + B\\)?', answer: '8', exp: '\\(\\frac{3x + 2}{x - 1} = \\frac{3(x - 1) + 5}{x - 1} = 3 + \\frac{5}{x - 1}\\). Thus \\(A = 3\\) and \\(B = 5\\), giving \\(A + B = 8\\).' }
+];
+
+let timeLeft = 1200; // 20 minutes
+let timerInterval;
+const userAnswers = {};
+
+function initQuiz() {
+    const container = document.getElementById('questions-container');
+    questions.forEach((q, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.id = `q-card-${q.id}`;
+
+        let inputHtml = '';
+        if (q.type === 'mc') {
+            inputHtml = `<div class="options">
+                ${q.options.map(opt => `
+                    <button type="button" class="option-btn" onclick="selectOption(${q.id}, '${opt.replace(/'/g, "\\'")}', this)">${opt}</button>
+                `).join('')}
+            </div>`;
+        } else {
+            inputHtml = `
+                <input type="text" class="text-input" placeholder="Enter numerical answer..." oninput="recordText(${q.id}, this.value)">
+            `;
+        }
+
+        card.innerHTML = `
+            <div class="question-header">
+                <span>Question ${index + 1} (${q.type === 'mc' ? 'Multiple Choice' : 'Open Ended'})</span>
+                <span class="tag tag-${q.difficulty}">${q.difficulty}</span>
+            </div>
+            <div class="question-body">${q.text}</div>
+            ${inputHtml}
+            <div id="feedback-${q.id}"></div>
+        `;
+        container.appendChild(card);
+    });
+
+    startTimer();
+    
+    // Trigger MathJax render after building questions
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+}
+
+function startTimer() {
+    const timerDisplay = document.getElementById('timer');
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        const mins = Math.floor(timeLeft / 60);
+        const secs = timeLeft % 60;
+        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            submitTest();
+        }
+    }, 1000);
+}
+
+function selectOption(qId, val, btn) {
+    userAnswers[qId] = val;
+    const parent = btn.parentElement;
+    const btns = parent.getElementsByClassName('option-btn');
+    for (let b of btns) {
+        b.classList.remove('selected');
+    }
+    btn.classList.add('selected');
+}
+
+function recordText(qId, val) {
+    userAnswers[qId] = val.trim();
+}
+
+function submitTest() {
+    clearInterval(timerInterval);
+    
+    // Disable form controls
+    const inputs = document.querySelectorAll('input, button.option-btn, #end-btn');
+    inputs.forEach(el => el.disabled = true);
+
+    let score = 0;
+
+    questions.forEach(q => {
+        const userAns = userAnswers[q.id] || '';
+        const feedbackDiv = document.getElementById(`feedback-${q.id}`);
+        
+        let isCorrect = false;
+        if (q.type === 'mc') {
+            isCorrect = userAns === q.answer;
+        } else {
+            isCorrect = userAns.toLowerCase() === q.answer.toLowerCase();
+        }
+
+        if (isCorrect) score++;
+
+        feedbackDiv.className = `result-item ${isCorrect ? 'result-correct' : 'result-incorrect'}`;
+        feedbackDiv.innerHTML = `
+            ${isCorrect ? '✓ Correct' : '✗ Incorrect'} | Your Answer: ${userAns || 'None'} | Correct Answer: ${q.answer}
+            <div class="explanation"><strong>Explanation:</strong> ${q.exp}</div>
+        `;
+    });
+
+    const resultsPanel = document.getElementById('results-panel');
+    const scoreText = document.getElementById('score-text');
+    scoreText.innerHTML = `You scored <strong>${score}</strong> out of <strong>${questions.length}</strong> (${((score/questions.length)*100).toFixed(1)}%).`;
+    resultsPanel.style.display = 'block';
+    
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.onload = initQuiz;
+</script>
+
+</body>
+</html>
