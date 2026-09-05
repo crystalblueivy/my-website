@@ -251,7 +251,7 @@
         <!-- Card 4: Roadmap -->
         <div class="card">
             <h2 class="card-title">Roadmap</h2>
-            <img src="https://github.com/crystalblueivy/my-website/blob/main/SebastianSolanoRoadmap.png?raw=true" alt="Roadmap" class="roadmap-img">
+            <img src="https://crystalblueivy.github.io/my-website/reports/diagnostic/SebastianSolanoCoronoRM.png" alt="Roadmap" class="roadmap-img">
         </div>
 
         <!-- Table: Diagnosis of Errors -->
